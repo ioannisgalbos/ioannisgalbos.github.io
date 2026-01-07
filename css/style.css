@@ -158,3 +158,11 @@ footer {
   height: auto;
   opacity: inherit; /* Inherit opacity from parent <a> */
 }
+
+@media (max-width: 768px) {
+  .profile-img {
+    max-width: 30%; /* Or hide: display: none; */
+  }
+  main {
+    padding-left: 5%;
+  }

@@ -30,18 +30,27 @@ html, body {
   height: 100%;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   opacity: 0;
-  animation: fade 12s infinite;
+  animation: fade 12s infinite ease-in-out;
 }
 
 .slide1 {
-  background-image: url("../images/bg1.jpg");
+  background-image: url("/images/bg1.jpg");
   animation-delay: 0s;
 }
 
 .slide2 {
-  background-image: url("../images/bg2.jpg");
+  background-image: url("/images/bg2.jpg");
   animation-delay: 6s;
+}
+
+@keyframes fade {
+  0%   { opacity: 0; }
+  10%  { opacity: 1; }
+  50%  { opacity: 1; }
+  60%  { opacity: 0; }
+  100% { opacity: 0; }
 }
 
 /* Fade animation (exact cross-fade behavior) */
@@ -87,8 +96,9 @@ footer {
 }
 
 /* WHITE LINE */
+
 .line {
-  width: 120px;
+  width: 480px; /* 4x longer */
   height: 1px;
   background: #fff;
   margin-bottom: 15px;

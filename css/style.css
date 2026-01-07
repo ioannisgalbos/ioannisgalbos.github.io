@@ -27,25 +27,24 @@ html, body {
   background-position: center;
   opacity: 0;
   animation: fade 14s infinite;
-  will-change: opacity; /* Improves performance for animations */
+  will-change: opacity;
 }
 
-/* IMPORTANT: RELATIVE PATHS */
 .slide1 {
-  background-image: url("../images/bg1.jpg");
+  background-image: url("/images/bg1.jpg"); /* Absolute path for reliability */
   animation-delay: 0s;
 }
 
 .slide2 {
-  background-image: url("../images/bg2.jpg");
+  background-image: url("/images/bg2.jpg"); /* Absolute path for reliability */
   animation-delay: 7s;
 }
 
 @keyframes fade {
   0% { opacity: 0; }
-  14% { opacity: 1; } /* Slightly longer fade-in for smoothness */
+  14% { opacity: 1; }
   43% { opacity: 1; }
-  57% { opacity: 0; } /* Adjusted for better cross-fade overlap */
+  57% { opacity: 0; }
   100% { opacity: 0; }
 }
 
@@ -60,7 +59,7 @@ nav {
   font-size: 13px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  z-index: 10; /* Ensures nav is above main content */
+  z-index: 10;
 }
 
 nav a {
@@ -74,15 +73,14 @@ nav a:hover {
 }
 
 /* CONTENT */
-
 main {
   position: fixed;
   inset: 0;
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* Changed from center to left-align */
-  text-align: left; /* Changed from center */
-  padding-left: 10%; /* Adds space from left edge; adjust % */
+  justify-content: flex-start;
+  text-align: left;
+  padding-left: 10%;
 }
 
 .panel {
@@ -90,6 +88,7 @@ main {
   padding: 40px;
   opacity: 0;
   transition: opacity 0.6s ease;
+  min-height: 50vh; /* Ensures enough height for short content to show image */
 }
 
 .panel.active {
@@ -110,12 +109,12 @@ p {
 
 .profile-img {
   position: absolute;
-  right: 10%; /* Adjust as needed */
+  right: 10%;
   top: 50%;
   transform: translateY(-50%);
-  max-width: 40%; /* Scales responsively; tweak for size */
+  max-width: 40%;
   height: auto;
-  opacity: 1; /* Ensure visible for testing */
+  opacity: 1;
 }
 
 /* FOOTER */
@@ -125,10 +124,10 @@ footer {
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  flex-direction: column; /* Stack line and socials vertically */
-  align-items: center; /* Center horizontally */
-  gap: 20px; /* Space between line and icons */
-  z-index: 10; /* Ensures footer is above main content */
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  z-index: 10;
 }
 
 .line {
@@ -154,64 +153,63 @@ footer {
 }
 
 .social-icon {
-  width: 20px; /* Adjust size to match original font-size: 14px; feel free to tweak */
+  width: 20px;
   height: auto;
-  opacity: inherit; /* Inherit opacity from parent <a> */
+  opacity: inherit;
 }
 
-@media (max-width: 768px) {
-  .profile-img {
-    max-width: 30%; /* Or hide: display: none; */
-  }
-  main {
-    padding-left: 5%;
-  }
-
-/* MOBILE RESPONSIVENESS */
+/* MOBILE RESPONSIVENESS (Consolidated) */
 @media (max-width: 768px) {
   body {
-    overflow: auto; /* Allow scrolling if content overflows vertically */
+    overflow: auto; /* Allow scrolling */
   }
 
   main {
-    justify-content: center; /* Center everything */
-    text-align: center; /* Center text */
-    padding-left: 0; /* Remove left padding */
-    padding: 20px; /* Add overall padding for breathing room */
-    flex-direction: column; /* Stack if needed, though panels are opacity-based */
+    justify-content: center;
+    text-align: center;
+    padding-left: 0;
+    padding: 20px;
+    flex-direction: column;
   }
 
   .panel {
-    max-width: 90%; /* Fit to screen width */
-    padding: 20px; /* Reduce padding */
+    max-width: 90%;
+    padding: 20px;
+    min-height: auto; /* Allow natural height on mobile */
+  }
+
+  p {
+    font-size: 13px; /* Slight reduction for better scaling */
+    word-break: break-word; /* Prevent overflow from long words/emails */
+    hyphens: auto; /* Auto-hyphenate for better wrapping */
   }
 
   .profile-img {
-    position: relative; /* Change to relative for stacking below text */
-    right: auto; /* Reset right positioning */
-    top: auto; /* Reset vertical centering */
-    transform: none; /* Remove transform */
-    max-width: 80%; /* Larger relative to narrow screen */
-    margin: 20px auto 0; /* Center horizontally, add top margin for spacing */
-    display: block; /* Ensure it behaves like a block */
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    max-width: 80%;
+    margin: 20px auto 0;
+    display: block;
   }
 
   nav {
-    gap: 15px; /* Reduce gap for smaller screens */
-    font-size: 12px; /* Slightly smaller text if needed */
-    flex-wrap: wrap; /* Allow wrapping if too wide */
-    justify-content: center; /* Center nav items */
+    gap: 15px;
+    font-size: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   footer {
-    gap: 15px; /* Reduce gap */
+    gap: 15px;
   }
 
   .line {
-    width: 80vw; /* Scale to viewport width */
+    width: 80vw;
   }
 
   .social-icon {
-    width: 18px; /* Slightly smaller icons */
+    width: 18px;
   }
 }

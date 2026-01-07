@@ -96,6 +96,7 @@ main {
   padding: 40px;
   opacity: 0;
   transition: opacity 0.6s ease;
+  z-index: 2; /* Ensure above other elements */
 }
 
 .panel.active {
@@ -184,16 +185,18 @@ footer {
 
 /* MOBILE RESPONSIVENESS */
 @media (max-width: 768px) {
-  body {
-    overflow: auto;
+  html, body {
+    overflow: auto; /* Always allow scrolling on mobile */
   }
 
   main {
-    justify-content: center;
-    text-align: left; /* Keep left-aligned for consistency, but with padding */
-    padding: 5% 5% 100px 5%; /* Side padding to avoid edges; bottom for footer */
+    position: relative; /* Change to relative for better flow */
+    inset: auto;
+    padding: 80px 5% 100px; /* Top for nav, sides for spacing, bottom for footer */
     flex-direction: column;
-    overflow-y: auto;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: visible; /* Ensure content shows */
   }
 
   .panel {
@@ -201,14 +204,30 @@ footer {
     top: auto;
     transform: none;
     -webkit-transform: none;
-    max-width: 90%;
-    padding: 20px 0; /* Reduced vertical padding */
+    max-width: 100%; /* Full width on mobile */
+    padding: 20px 0;
+    text-align: center; /* Center text for better mobile look */
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .panel.active {
+    opacity: 1;
   }
 
   p {
-    font-size: 13px;
+    font-size: 14px; /* Slightly larger for readability */
     word-break: break-word;
     hyphens: auto;
+    margin: 0 auto;
+    max-width: 90%; /* Prevent too wide lines */
+  }
+
+  iframe {
+    width: 100%;
+    max-width: 90%;
+    margin: 10px auto;
+    display: block;
   }
 
   .static-profile-img {
@@ -217,25 +236,32 @@ footer {
     top: auto;
     transform: none;
     -webkit-transform: none;
-    max-width: 90%; /* Larger on mobile for visibility */
-    margin: 20px auto 0; /* Center for balance */
+    max-width: 70%; /* Reduced size to leave space for text */
+    height: auto;
+    margin: 20px auto;
     display: block;
   }
 
   nav {
-    gap: 15px;
+    top: 20px; /* Closer to top on mobile */
+    gap: 10px;
     font-size: 12px;
     flex-wrap: wrap;
     justify-content: center;
   }
 
   footer {
-    gap: 15px;
-    bottom: 20px;
+    bottom: 10px;
+    gap: 10px;
   }
 
   .line {
-    width: 80vw;
+    width: 90vw;
+  }
+
+  .socials {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .social-icon {

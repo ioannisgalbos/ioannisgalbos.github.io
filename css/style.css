@@ -35,14 +35,22 @@ html, body {
   animation: fade 12s infinite ease-in-out;
 }
 
+#.slide1 {
+#  background-image: url("/images/bg1.jpg");
+#  animation-delay: 0s;
+#}
+
+#.slide2 {
+#  background-image: url("/images/bg2.jpg");
+#  animation-delay: 6s;
+#}
+
 .slide1 {
-  background-image: url("/images/bg1.jpg");
-  animation-delay: 0s;
+  background: red;
 }
 
 .slide2 {
-  background-image: url("/images/bg2.jpg");
-  animation-delay: 6s;
+  background: blue;
 }
 
 @keyframes fade {

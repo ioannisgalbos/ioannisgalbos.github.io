@@ -166,3 +166,52 @@ footer {
   main {
     padding-left: 5%;
   }
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+  body {
+    overflow: auto; /* Allow scrolling if content overflows vertically */
+  }
+
+  main {
+    justify-content: center; /* Center everything */
+    text-align: center; /* Center text */
+    padding-left: 0; /* Remove left padding */
+    padding: 20px; /* Add overall padding for breathing room */
+    flex-direction: column; /* Stack if needed, though panels are opacity-based */
+  }
+
+  .panel {
+    max-width: 90%; /* Fit to screen width */
+    padding: 20px; /* Reduce padding */
+  }
+
+  .profile-img {
+    position: relative; /* Change to relative for stacking below text */
+    right: auto; /* Reset right positioning */
+    top: auto; /* Reset vertical centering */
+    transform: none; /* Remove transform */
+    max-width: 80%; /* Larger relative to narrow screen */
+    margin: 20px auto 0; /* Center horizontally, add top margin for spacing */
+    display: block; /* Ensure it behaves like a block */
+  }
+
+  nav {
+    gap: 15px; /* Reduce gap for smaller screens */
+    font-size: 12px; /* Slightly smaller text if needed */
+    flex-wrap: wrap; /* Allow wrapping if too wide */
+    justify-content: center; /* Center nav items */
+  }
+
+  footer {
+    gap: 15px; /* Reduce gap */
+  }
+
+  .line {
+    width: 80vw; /* Scale to viewport width */
+  }
+
+  .social-icon {
+    width: 18px; /* Slightly smaller icons */
+  }
+}

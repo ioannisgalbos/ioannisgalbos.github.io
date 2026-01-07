@@ -178,7 +178,7 @@ footer {
 }
 
 .social-icon {
-  width: 20px;
+  width: 27px;
   height: auto;
   opacity: inherit;
 }
@@ -203,7 +203,6 @@ footer {
     display: none; /* Hide inactive panels to prevent stacking */
     position: relative;
     top: auto;
-    left: auto;
     transform: none;
     -webkit-transform: none;
     max-width: 100%; /* Full width on mobile */
@@ -266,6 +265,6 @@ footer {
   }
 
   .social-icon {
-    width: 18px;
+    width: 24px;
   }
 }

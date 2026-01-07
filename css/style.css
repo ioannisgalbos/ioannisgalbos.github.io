@@ -31,12 +31,12 @@ html, body {
 }
 
 .slide1 {
-  background-image: url("/images/bg1.jpg"); /* Absolute path for reliability */
+  background-image: url("/images/bg1.jpg");
   animation-delay: 0s;
 }
 
 .slide2 {
-  background-image: url("/images/bg2.jpg"); /* Absolute path for reliability */
+  background-image: url("/images/bg2.jpg");
   animation-delay: 7s;
 }
 
@@ -81,6 +81,7 @@ main {
   justify-content: flex-start;
   text-align: left;
   padding-left: 10%;
+  overflow-y: auto; /* Enable vertical scrolling for tall content like Discography */
 }
 
 .panel {
@@ -88,7 +89,8 @@ main {
   padding: 40px;
   opacity: 0;
   transition: opacity 0.6s ease;
-  min-height: 50vh; /* Ensures enough height for short content to show image */
+  position: relative; /* Better containment for absolute children */
+  width: 100%; /* Ensures consistent left alignment */
 }
 
 .panel.active {
@@ -101,10 +103,23 @@ h1 {
   margin-bottom: 20px;
 }
 
+h2 {
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
 p {
   font-size: 14px;
   line-height: 1.6;
   opacity: 0.9;
+}
+
+iframe {
+  margin-bottom: 20px;
+  border: none; /* Clean look */
 }
 
 .profile-img {
@@ -158,10 +173,10 @@ footer {
   opacity: inherit;
 }
 
-/* MOBILE RESPONSIVENESS (Consolidated) */
+/* MOBILE RESPONSIVENESS */
 @media (max-width: 768px) {
   body {
-    overflow: auto; /* Allow scrolling */
+    overflow: auto;
   }
 
   main {
@@ -170,18 +185,19 @@ footer {
     padding-left: 0;
     padding: 20px;
     flex-direction: column;
+    overflow-y: auto;
   }
 
   .panel {
     max-width: 90%;
     padding: 20px;
-    min-height: auto; /* Allow natural height on mobile */
+    position: relative;
   }
 
   p {
-    font-size: 13px; /* Slight reduction for better scaling */
-    word-break: break-word; /* Prevent overflow from long words/emails */
-    hyphens: auto; /* Auto-hyphenate for better wrapping */
+    font-size: 13px;
+    word-break: break-word;
+    hyphens: auto;
   }
 
   .profile-img {

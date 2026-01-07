@@ -81,16 +81,19 @@ main {
   justify-content: flex-start;
   text-align: left;
   padding-left: 10%;
-  overflow-y: auto; /* Enable vertical scrolling for tall content like Discography */
+  overflow-y: auto; /* Scroll for long content */
+  z-index: 1; /* Above background, below nav/footer */
 }
 
 .panel {
-  max-width: 600px;
+  position: absolute; /* Overlap all in same spot */
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%); /* Vertical center */
+  max-width: 50%; /* Wider for widgets, but fixed left */
   padding: 40px;
   opacity: 0;
   transition: opacity 0.6s ease;
-  position: relative; /* Better containment for absolute children */
-  width: 100%; /* Ensures consistent left alignment */
 }
 
 .panel.active {
@@ -118,18 +121,20 @@ p {
 }
 
 iframe {
+  width: 100%; /* Full panel width for widgets */
   margin-bottom: 20px;
-  border: none; /* Clean look */
+  border: none;
 }
 
-.profile-img {
-  position: absolute;
+/* STATIC IMAGE */
+.static-profile-img {
+  position: fixed;
   right: 10%;
   top: 50%;
   transform: translateY(-50%);
-  max-width: 40%;
+  max-width: 40%; /* Original size */
   height: auto;
-  opacity: 1;
+  z-index: 5; /* Above panels but below nav */
 }
 
 /* FOOTER */
@@ -183,24 +188,20 @@ footer {
     justify-content: center;
     text-align: center;
     padding-left: 0;
-    padding: 20px;
+    padding: 20px 20px 100px; /* Extra bottom for footer */
     flex-direction: column;
     overflow-y: auto;
   }
 
   .panel {
+    position: relative; /* Stack normally on mobile */
+    top: auto;
+    transform: none;
     max-width: 90%;
     padding: 20px;
-    position: relative;
   }
 
-  p {
-    font-size: 13px;
-    word-break: break-word;
-    hyphens: auto;
-  }
-
-  .profile-img {
+  .static-profile-img {
     position: relative;
     right: auto;
     top: auto;
@@ -219,6 +220,7 @@ footer {
 
   footer {
     gap: 15px;
+    bottom: 20px;
   }
 
   .line {

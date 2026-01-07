@@ -1,4 +1,4 @@
-/* RESET */
+/* RESET & BASE */
 * {
   margin: 0;
   padding: 0;
@@ -48,12 +48,13 @@ html, body {
   100% { opacity: 0; }
 }
 
-/* NAV */
+/* NAVIGATION */
 nav {
   position: fixed;
   top: 40px;
   left: 50%;
   transform: translateX(-50%);
+  -webkit-transform: translateX(-50%); /* Safari fix */
   display: flex;
   gap: 30px;
   font-size: 13px;
@@ -72,7 +73,7 @@ nav a:hover {
   opacity: 1;
 }
 
-/* CONTENT */
+/* MAIN CONTENT */
 main {
   position: fixed;
   inset: 0;
@@ -80,17 +81,18 @@ main {
   align-items: center;
   justify-content: flex-start;
   text-align: left;
-  padding-left: 10%;
-  overflow-y: auto; /* Scroll for long content */
-  z-index: 1; /* Above background, below nav/footer */
+  padding-left: 15%; /* Increased from 10% for more space from left edge */
+  overflow-y: auto;
+  z-index: 1;
 }
 
 .panel {
-  position: absolute; /* Overlap all in same spot */
+  position: absolute;
   left: 0;
   top: 50%;
-  transform: translateY(-50%); /* Vertical center */
-  max-width: 50%; /* Wider for widgets, but fixed left */
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%); /* Safari fix */
+  max-width: 45%; /* Slightly narrower to bring closer to center */
   padding: 40px;
   opacity: 0;
   transition: opacity 0.6s ease;
@@ -121,7 +123,7 @@ p {
 }
 
 iframe {
-  width: 100%; /* Full panel width for widgets */
+  width: 100%;
   margin-bottom: 20px;
   border: none;
 }
@@ -129,12 +131,13 @@ iframe {
 /* STATIC IMAGE */
 .static-profile-img {
   position: fixed;
-  right: 10%;
+  right: 5%; /* Moved left from 10% for closeness */
   top: 50%;
   transform: translateY(-50%);
-  max-width: 40%; /* Original size */
+  -webkit-transform: translateY(-50%); /* Safari fix */
+  max-width: 45%; /* Slightly larger for better size/closeness */
   height: auto;
-  z-index: 5; /* Above panels but below nav */
+  z-index: 5;
 }
 
 /* FOOTER */
@@ -143,6 +146,7 @@ footer {
   bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
+  -webkit-transform: translateX(-50%); /* Safari fix */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -186,19 +190,25 @@ footer {
 
   main {
     justify-content: center;
-    text-align: center;
-    padding-left: 0;
-    padding: 20px 20px 100px; /* Extra bottom for footer */
+    text-align: left; /* Keep left-aligned for consistency, but with padding */
+    padding: 5% 5% 100px 5%; /* Side padding to avoid edges; bottom for footer */
     flex-direction: column;
     overflow-y: auto;
   }
 
   .panel {
-    position: relative; /* Stack normally on mobile */
+    position: relative;
     top: auto;
     transform: none;
+    -webkit-transform: none;
     max-width: 90%;
-    padding: 20px;
+    padding: 20px 0; /* Reduced vertical padding */
+  }
+
+  p {
+    font-size: 13px;
+    word-break: break-word;
+    hyphens: auto;
   }
 
   .static-profile-img {
@@ -206,8 +216,9 @@ footer {
     right: auto;
     top: auto;
     transform: none;
-    max-width: 80%;
-    margin: 20px auto 0;
+    -webkit-transform: none;
+    max-width: 90%; /* Larger on mobile for visibility */
+    margin: 20px auto 0; /* Center for balance */
     display: block;
   }
 

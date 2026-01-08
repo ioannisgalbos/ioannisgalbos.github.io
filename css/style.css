@@ -82,13 +82,13 @@ main {
   justify-content: center; /* Centered overall content */
   text-align: left;
   padding-left: 0; /* Removed for centering */
-  padding-top: 100px; /* Space below nav to prevent overlap */
+  padding-top: 120px; /* Increased space below nav to prevent overlap */
   overflow-y: auto;
   z-index: 1;
 }
 
 .panel {
-  position: relative; /* Change to relative for natural flow */
+  position: relative; /* Relative for natural flow */
   max-width: 35%; /* Narrower to fit closer */
   padding: 40px;
   opacity: 0;
@@ -222,6 +222,7 @@ footer {
     hyphens: auto;
     margin: 0 auto;
     max-width: 90%; /* Prevent too wide lines */
+    text-align: center !important; /* Explicit override */
   }
 
   iframe {

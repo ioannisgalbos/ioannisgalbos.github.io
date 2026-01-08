@@ -215,8 +215,8 @@ footer {
     display: block; /* Show only active panel */
   }
 
-  h1, h2, p {
-    text-align: center !important; /* Force center alignment for all text elements */
+  .panel, .panel * {
+    text-align: center !important; /* Force centering on all child elements */
   }
 
   p {

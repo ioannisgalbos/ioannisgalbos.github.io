@@ -132,7 +132,7 @@ iframe {
 /* STATIC IMAGE */
 .static-profile-img {
   position: fixed;
-  right: 2%; /* Even closer to text */
+  right: 10%; /* Moved further left (higher right value) for more centering */
   top: 50%;
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%); /* Safari fix */
@@ -215,13 +215,16 @@ footer {
     display: block; /* Show only active panel */
   }
 
+  h1, h2, p {
+    text-align: center !important; /* Force center alignment for all text elements */
+  }
+
   p {
     font-size: 14px; /* Slightly larger for readability */
     word-break: break-word;
     hyphens: auto;
     margin: 0 auto;
     max-width: 90%; /* Prevent too wide lines */
-    text-align: center; /* Explicitly center text */
   }
 
   iframe {

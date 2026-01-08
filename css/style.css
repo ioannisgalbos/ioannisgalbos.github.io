@@ -79,22 +79,29 @@ main {
   inset: 0;
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* Align to left for text positioning */
+  justify-content: center;
+  gap: 5%; /* Space between text and image */
   text-align: left;
-  padding-left: 25%; /* Move text more towards center from left */
+  padding: 100px 0 100px; /* Top/bottom padding to avoid nav/footer overlap */
   overflow-y: auto;
   z-index: 1;
 }
 
+.content-left {
+  max-width: 35%;
+  height: 100%;
+  overflow-y: auto; /* Scroll if content long */
+  padding: 0 20px;
+}
+
 .panel {
-  max-width: 30%; /* Narrower to keep on left without overlap */
-  padding: 40px 40px 100px 0; /* Extra bottom padding to avoid footer overlap */
+  display: none; /* Hide by default */
   opacity: 0;
   transition: opacity 0.6s ease;
-  z-index: 2;
 }
 
 .panel.active {
+  display: block;
   opacity: 1;
 }
 
@@ -126,14 +133,8 @@ iframe {
 
 /* STATIC IMAGE */
 .static-profile-img {
-  position: fixed;
-  right: 10%; /* Moved further left (higher right value) for more centering */
-  top: 50%;
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%); /* Safari fix */
-  max-width: 45%; /* Slightly larger for better size/closeness */
+  max-width: 45%;
   height: auto;
-  z-index: 5;
 }
 
 /* FOOTER */
@@ -192,6 +193,13 @@ footer {
     align-items: center;
     justify-content: flex-start;
     overflow: visible; /* Ensure content shows */
+  }
+
+  .content-left {
+    max-width: 100%;
+    height: auto;
+    overflow: visible;
+    padding: 0;
   }
 
   .panel {

@@ -88,21 +88,27 @@ main {
 
 .panel {
   position: absolute;
-  left: 15%; /* Fixed position matching homepage */
+  left: 15%; /* Fixed left position for all panels */
   top: 50%;
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   max-width: 35%;
+  max-height: calc(100vh - 200px); /* Limit height to avoid overflow issues */
   padding: 40px;
   opacity: 0;
   transition: opacity 0.6s ease;
   z-index: 2;
-  overflow-y: auto; /* Scroll for long content */
-  max-height: 80vh; /* Limit height to avoid footer overlap */
+  overflow-y: auto; /* Scroll if content is long */
+}
+
+/* Hide non-active panels */
+.panel:not(.active) {
+  display: none;
 }
 
 .panel.active {
   opacity: 1;
+  display: block;
 }
 
 h1 {

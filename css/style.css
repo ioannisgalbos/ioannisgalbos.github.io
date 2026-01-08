@@ -78,21 +78,17 @@ main {
   position: fixed;
   inset: 0;
   display: flex;
-  align-items: center; /* Restore center alignment */
+  align-items: flex-start; /* Align to top for long content */
   justify-content: center; /* Centered overall content */
   text-align: left;
   padding-left: 0; /* Removed for centering */
-  padding-top: 0; /* No extra top padding */
+  padding-top: 100px; /* Space below nav to prevent overlap */
   overflow-y: auto;
   z-index: 1;
 }
 
 .panel {
-  position: absolute;
-  left: 20%; /* Further right for closeness and centering */
-  top: 50%;
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%); /* Safari fix */
+  position: relative; /* Change to relative for natural flow */
   max-width: 35%; /* Narrower to fit closer */
   padding: 40px;
   opacity: 0;

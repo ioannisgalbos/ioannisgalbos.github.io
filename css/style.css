@@ -81,14 +81,14 @@ main {
   align-items: center;
   justify-content: center; /* Centered overall content */
   text-align: left;
-  padding-left: 10%; /* Adjusted for balance */
+  padding-left: 0; /* Removed for centering */
   overflow-y: auto;
   z-index: 1;
 }
 
 .panel {
   position: absolute;
-  left: 15%; /* Moved further right for closeness */
+  left: 20%; /* Further right for closeness and centering */
   top: 50%;
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%); /* Safari fix */
@@ -132,7 +132,7 @@ iframe {
 /* STATIC IMAGE */
 .static-profile-img {
   position: fixed;
-  right: 3%; /* Closer to text */
+  right: 2%; /* Even closer to text */
   top: 50%;
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%); /* Safari fix */
@@ -221,6 +221,7 @@ footer {
     hyphens: auto;
     margin: 0 auto;
     max-width: 90%; /* Prevent too wide lines */
+    text-align: center; /* Explicitly center text */
   }
 
   iframe {

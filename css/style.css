@@ -139,3 +139,34 @@ footer {
     width: 20px;
   }
 }
+
+/* Base styles for desktop */
+.hero {
+    background-image: url('your-background.jpg');
+    background-size: cover; /* Or 'contain' if it fits better */
+    background-position: center;
+    height: 80vh; /* Adjust as needed for desktop */
+    position: relative;
+}
+
+.icons-container {
+    display: flex;
+    justify-content: center;
+    margin-top: -50px; /* Negative margin to pull icons up over the image if overlapping is intended */
+    position: relative; /* Or absolute if positioned inside .hero */
+}
+
+/* Media query for mobile (adjust breakpoint as needed, e.g., max-width: 768px for tablets/phones) */
+@media (max-width: 768px) {
+    .hero {
+        background-size: contain; /* Scales to fit without cropping vertically */
+        background-repeat: no-repeat; /* Prevents tiling if image is small */
+        height: auto; /* Let it shrink based on content */
+        min-height: 50vh; /* Minimum to avoid collapsing too much */
+    }
+
+    .icons-container {
+        margin-top: -30px; /* Pull icons higher up on mobile */
+        padding-bottom: 20px; /* Add space if needed for scrolling */
+    }
+}

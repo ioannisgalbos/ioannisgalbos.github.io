@@ -7,48 +7,63 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    /* INTERNAL STYLES FOR BACKGROUND IMAGES 
-       (This fixes the path issue by loading relative to the HTML file)
-    */
-    .bg-layer {
+    /* Full-screen Background Logic */
+    .bg-container {
       position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-size: cover;
-      background-position: center;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       z-index: -2;
-      transition: opacity 2s ease-in-out;
+      background: #000;
+      overflow: hidden;
     }
 
-    /* We use the simple path 'images/' because index.html is next to the images folder */
+    .bg-img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 3s ease-in-out;
+      transform: scale(1.05); /* Slight zoom for a cinematic look */
+      animation: kenBurns 30s infinite alternate;
+    }
+
     .bg-1 {
-      background-image: url('images/bg1.jpg');
-      animation: zoomFade 20s infinite alternate;
+      background-image: url('https://github.com/ioannisgalbos/ioannisgalbos.github.io/blob/main/images/bg1.jpg?raw=true');
+      animation: crossfade-1 16s infinite;
     }
 
     .bg-2 {
-      background-image: url('images/bg2.jpg');
-      animation: zoomFade 20s infinite alternate-reverse;
-      opacity: 0; 
+      background-image: url('https://github.com/ioannisgalbos/ioannisgalbos.github.io/blob/main/images/bg2.jpg?raw=true');
+      animation: crossfade-2 16s infinite;
     }
 
-    /* Cinematic Zoom & Fade Animation */
-    @keyframes zoomFade {
-      0% { opacity: 1; transform: scale(1); }
-      45% { opacity: 1; }
-      55% { opacity: 0; }
-      100% { opacity: 0; transform: scale(1.15); }
+    @keyframes crossfade-1 {
+      0%, 40% { opacity: 1; }
+      60%, 100% { opacity: 0; }
     }
-    
-    /* Darkening overlay so white text pops without a box */
+
+    @keyframes crossfade-2 {
+      0%, 40% { opacity: 0; }
+      60%, 100% { opacity: 1; }
+    }
+
+    @keyframes kenBurns {
+      from { transform: scale(1.05); }
+      to { transform: scale(1.15); }
+    }
+
     .overlay {
       position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.4); /* Adjust this if you want it darker/lighter */
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.3); /* Adjust darkness of photos here */
       z-index: -1;
     }
   </style>
@@ -56,82 +71,59 @@
 
 <body>
 
-  <div class="bg-layer bg-1"></div>
-  <div class="bg-layer bg-2"></div>
-  <div class="overlay"></div>
+  <div class="bg-container">
+    <div class="bg-img bg-1"></div>
+    <div class="bg-img bg-2"></div>
+    <div class="overlay"></div>
+  </div>
 
-  <div class="app-wrapper">
+  <div class="main-wrapper">
     
-    <header>
-      <div class="logo">Ioannis Galbos</div>
-      <nav>
-        <a href="#" data-panel="home" class="active-link">Home</a>
-        <a href="#" data-panel="bio">Bio</a>
-        <a href="#" data-panel="discography">Music</a>
-        <a href="#" data-panel="impressum">Contact</a>
-      </nav>
-    </header>
+    <nav>
+      <a href="#" data-panel="home" class="active-link">Home</a>
+      <a href="#" data-panel="bio">Bio</a>
+      <a href="#" data-panel="discography">Music</a>
+      <a href="#" data-panel="impressum">Contact</a>
+    </nav>
 
     <main>
-      
       <section id="home" class="panel active">
-        <h1 class="fade-in-up">Ioannis Galbos</h1>
-        <p class="subtitle fade-in-up" style="animation-delay: 0.2s">Electronic Producer / Stockholm</p>
+        <h1>Ioannis Galbos</h1>
+        <p class="tagline">Electronic Music Artist</p>
       </section>
 
-      <section id="bio" class="panel text-panel">
-        <div class="scroll-content">
+      <section id="bio" class="panel">
+        <div class="content-limit">
           <h2>Bio</h2>
-          <p>
-            <strong>Ioannis Galbos / Stockholm, Sweden</strong><br><br>
-            Musical journey began circa 2005 in Skopje, crafting electronic music for the dancefloor.
-            Tracks released by <strong>LAUS MUSIC</strong> (London), <strong>Juan's Kitchen Delights</strong> (Skopje), and <strong>2 Rhythm 4 Record</strong> (UK).
-          </p>
-          <p>
-            He has released several EPs on Juan’s Kitchen Delights Recordings. Influences include Lawrence (Sten) and Tim Paris, showcasing the many shades found in his work.
-          </p>
+          <p>Based in Stockholm, Ioannis Galbos crafts atmospheric electronic music rooted in deep textures and dancefloor energy. With releases on <strong>LAUS MUSIC</strong> and <strong>Juan's Kitchen Delights</strong>, his sound explores the many shades of techno and house.</p>
         </div>
       </section>
 
-      <section id="discography" class="panel wide-panel">
-        <div class="scroll-content">
-          <div class="music-grid">
-            <div class="music-col">
-              <h3>Latest</h3>
-              <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%3Aplaylists%3A2171111465%3Fsecret_token%3Ds-GejCYioKyrM&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-            </div>
-            
-            <div class="music-col">
-               <h3>Mixes</h3>
-               <iframe width="100%" height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1724244144&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe>
-               <iframe width="100%" height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1471345969&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe>
-               <iframe width="100%" height="60" src="https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&feed=%2Fioannisgalbos%2Fkickass-techno%2F" frameborder="0"></iframe>
-            </div>
+      <section id="discography" class="panel">
+        <div class="content-limit">
+          <div class="music-stack">
+            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%3Aplaylists%3A2171111465%3Fsecret_token%3Ds-GejCYioKyrM&color=%23ffffff&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe>
           </div>
         </div>
       </section>
 
-      <section id="impressum" class="panel text-panel">
-        <div class="center-content">
-          <h2>Contact</h2>
-          <p>Stockholm, Sweden</p>
-          <a href="mailto:info@ioannisgalbos.se" class="email-link">info@ioannisgalbos.se</a>
-        </div>
+      <section id="impressum" class="panel">
+        <h2>Contact</h2>
+        <a href="mailto:info@ioannisgalbos.se" class="email-btn">info@ioannisgalbos.se</a>
       </section>
-
     </main>
 
     <footer>
       <div class="socials">
-        <a href="https://instagram.com/ioannisgalbos" target="_blank"><img src="icons/instagram.png" alt="IG"></a>
-        <a href="https://soundcloud.com/ioannisgalbos" target="_blank"><img src="icons/soundcloud.svg" alt="SC"></a>
-        <a href="https://www.youtube.com/@IoannisGalbos" target="_blank"><img src="icons/youtube.png" alt="YT"></a>
-        <a href="https://open.spotify.com/artist/6sN8etgNcHGLmcrFZQH4Q4" target="_blank"><img src="icons/spotify.png" alt="SP"></a>
-        <a href="https://mixcloud.com/ioannisgalbos" target="_blank"><img src="icons/mixcloud.png" alt="MC"></a>
-        <a href="https://www.beatport.com/artist/ioannis-galbos/1023769" target="_blank"><img src="icons/beatport.png" alt="BP"></a>
-        <a href="https://www.discogs.com/artist/6166704-Ioannis-Galbos" target="_blank"><img src="icons/discogs.png" alt="DC"></a>
-        <a href="https://music.apple.com/us/artist/ioannis-galbos/1594453757" target="_blank"><img src="icons/applemusic.png" alt="AM"></a>
-        <a href="https://www.junodownload.com/artists/Ioannis+Galbos/releases/" target="_blank"><img src="icons/junodownload.png" alt="JD"></a>
+        <a href="https://instagram.com/ioannisgalbos" target="_blank"><img src="icons/instagram.png" alt="Instagram"></a>
+        <a href="https://soundcloud.com/ioannisgalbos" target="_blank"><img src="icons/soundcloud.svg" alt="Soundcloud"></a>
+        <a href="https://www.youtube.com/@IoannisGalbos" target="_blank"><img src="icons/youtube.png" alt="Youtube"></a>
+        <a href="https://open.spotify.com/artist/6sN8etgNcHGLmcrFZQH4Q4" target="_blank"><img src="icons/spotify.png" alt="Spotify"></a>
+        <a href="https://mixcloud.com/ioannisgalbos" target="_blank"><img src="icons/mixcloud.png" alt="Mixcloud"></a>
+        <a href="https://www.beatport.com/artist/ioannis-galbos/1023769" target="_blank"><img src="icons/beatport.png" alt="Beatport"></a>
+        <a href="https://www.discogs.com/artist/6166704-Ioannis-Galbos" target="_blank"><img src="icons/discogs.png" alt="Discogs"></a>
+        <a href="https://music.apple.com/us/artist/ioannis-galbos/1594453757" target="_blank"><img src="icons/applemusic.png" alt="Apple Music"></a>
+        <a href="https://www.junodownload.com/artists/Ioannis+Galbos/releases/" target="_blank"><img src="icons/junodownload.png" alt="Juno Download"></a>
       </div>
     </footer>
 
@@ -144,12 +136,8 @@
     links.forEach(link => {
       link.addEventListener("click", e => {
         e.preventDefault();
-        
-        // Update Nav
         links.forEach(l => l.classList.remove("active-link"));
         link.classList.add("active-link");
-
-        // Update Panel
         panels.forEach(p => p.classList.remove("active"));
         document.getElementById(link.dataset.panel).classList.add("active");
       });

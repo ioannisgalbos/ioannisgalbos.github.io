@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ioannis Galbos</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,14 +12,12 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    /* BACKGROUND LOGIC - SLOWER TRANSITION */
     .bg-container {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
       z-index: -2;
-      /* 30s total loop for maximum smoothness */
-      animation: bgColorShift 30s infinite;
+      animation: bgColorShift 20s infinite;
     }
 
     .bg-img {
@@ -35,28 +33,21 @@
 
     .bg-1 {
       background-image: url('https://github.com/ioannisgalbos/ioannisgalbos.github.io/blob/main/images/bg1.jpg?raw=true');
-      animation: crossfade-1 30s infinite;
+      animation: crossfade-1 20s infinite;
     }
 
     .bg-2 {
       background-image: url('https://github.com/ioannisgalbos/ioannisgalbos.github.io/blob/main/images/bg2.jpg?raw=true');
-      animation: crossfade-2 30s infinite;
+      animation: crossfade-2 20s infinite;
     }
 
     @keyframes bgColorShift {
-      0%, 40% { background-color: #000000; } 
-      60%, 100% { background-color: #ffffff; }
+      0%, 45% { background-color: #000000; } 
+      55%, 100% { background-color: #ffffff; }
     }
 
-    @keyframes crossfade-1 {
-      0%, 40% { opacity: 1; }
-      60%, 100% { opacity: 0; }
-    }
-
-    @keyframes crossfade-2 {
-      0%, 40% { opacity: 0; }
-      60%, 100% { opacity: 1; }
-    }
+    @keyframes crossfade-1 { 0%, 45% { opacity: 1; } 55%, 100% { opacity: 0; } }
+    @keyframes crossfade-2 { 0%, 45% { opacity: 0; } 55%, 100% { opacity: 1; } }
   </style>
 </head>
 

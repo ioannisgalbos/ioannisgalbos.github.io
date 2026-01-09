@@ -1,34 +1,35 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
-  font-family: 'Inter', sans-serif;
-  height: 100vh;
+html, body {
+  height: 100%;
   width: 100%;
   overflow: hidden;
   background-color: #000;
+  font-family: 'Inter', sans-serif;
 }
 
 .main-wrapper {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  justify-content: space-between; /* Pushes nav to top, socials to bottom */
+  height: 100dvh; /* Dynamic viewport height for mobile browsers */
   width: 100%;
   padding: 20px;
   position: relative;
   z-index: 10;
-  animation: textColorShift 20s infinite;
+  animation: textColorShift 30s infinite;
 }
 
 @keyframes textColorShift {
-  0%, 45% { color: #ffffff; }
-  55%, 100% { color: #000000; }
+  0%, 40% { color: #ffffff; }
+  60%, 100% { color: #000000; }
 }
 
 nav {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  flex: 0 0 auto;
+  gap: 15px;
+  flex-wrap: wrap;
   padding: 10px 0;
 }
 
@@ -38,7 +39,8 @@ nav a {
   opacity: 0.6;
   text-transform: uppercase;
   font-size: 0.7rem;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
+  transition: opacity 0.3s;
 }
 
 nav a.active-link {
@@ -47,7 +49,7 @@ nav a.active-link {
 }
 
 main {
-  flex: 1;
+  flex-grow: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,28 +61,24 @@ main {
   text-align: center;
   width: 100%;
   max-width: 600px;
-  animation: fadeIn 0.8s ease forwards;
 }
 
-.panel.active { display: block; }
+.panel.active { display: block; animation: fadeIn 0.8s ease; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 .music-scroll-area {
-  max-height: 50vh;
+  max-height: 45vh;
   overflow-y: auto;
   padding: 10px;
-  scrollbar-width: none; 
+  scrollbar-width: none;
 }
 .music-scroll-area::-webkit-scrollbar { display: none; }
 
-.music-stack iframe {
-  margin-bottom: 15px;
-  border-radius: 8px;
-}
+.music-stack iframe { margin-bottom: 15px; border-radius: 8px; }
 
-h1 { font-size: clamp(1.8rem, 6vw, 3rem); font-weight: 200; letter-spacing: -1px;}
+h1 { font-size: clamp(1.8rem, 6vw, 3rem); font-weight: 200; }
 .tagline { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 5px; opacity: 0.8; }
-h2 { font-size: 1.2rem; font-weight: 400; text-transform: uppercase; margin-bottom: 15px; }
-p { line-height: 1.6; font-weight: 300; font-size: 0.95rem; }
 
 .email-btn {
   color: inherit;
@@ -89,14 +87,15 @@ p { line-height: 1.6; font-weight: 300; font-size: 0.95rem; }
   padding: 10px 20px;
   font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
 }
 
-/* FOOTER - ENSURING VISIBILITY ON MOBILE */
+/* SOCIALS - VISIBILITY FIX */
 footer {
-  flex: 0 0 auto;
-  padding: 20px 0;
   width: 100%;
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .socials {
@@ -104,38 +103,32 @@ footer {
   gap: 12px;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
 }
 
 .socials img {
   width: 22px;
-  height: auto;
-  transition: transform 0.2s;
-  opacity: 1; /* Keep original colors */
+  height: 22px;
+  object-fit: contain;
+  opacity: 1;
 }
 
-/* MOBILE SPECIFIC OVERRIDES */
-@media (max-width: 768px) {
-  .main-wrapper {
-    padding: 10px;
-  }
+/* MOBILE FIXES */
+@media (max-width: 480px) {
+  .main-wrapper { padding: 10px; }
   
-  nav {
-    gap: 10px;
-  }
-  
+  nav { gap: 8px; }
   nav a { font-size: 0.6rem; }
-
-  /* On small screens, we strictly limit music height so it doesn't push footer out */
+  
   .music-scroll-area {
-    max-height: 45vh; 
+    max-height: 40vh; /* Shorter scroll area to ensure footer fits */
   }
 
   .socials {
-    gap: 15px;
+    gap: 10px;
   }
-
+  
   .socials img {
     width: 20px;
+    height: 20px;
   }
 }

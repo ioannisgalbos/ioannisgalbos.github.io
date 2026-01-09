@@ -23,7 +23,7 @@
   <main class="glass-container">
     
     <header>
-      <div class="logo">IOANNIS GALBOS</div>
+      <div class="logo">IG</div>
       <nav>
         <a href="#" data-panel="home" class="active-link">Home</a>
         <a href="#" data-panel="bio">Bio</a>
@@ -36,7 +36,7 @@
       
       <section id="home" class="panel active">
         <div class="hero-text">
-          <h1>Electronic Atmosphere</h1>
+          <h1>Ioannis Galbos</h1>
           <p>Producer / Artist / Stockholm</p>
           <div class="mini-separator"></div>
         </div>
@@ -114,21 +114,10 @@
     links.forEach(link => {
       link.addEventListener("click", e => {
         e.preventDefault();
-        
-        // Remove active class from links
         links.forEach(l => l.classList.remove("active-link"));
         link.classList.add("active-link");
-
-        // Hide all panels
-        panels.forEach(p => {
-            p.classList.remove("active");
-            // Optional: reset scroll position
-            p.scrollTop = 0; 
-        });
-
-        // Show target panel with a slight delay for transition
-        const target = document.getElementById(link.dataset.panel);
-        target.classList.add("active");
+        panels.forEach(p => p.classList.remove("active"));
+        document.getElementById(link.dataset.panel).classList.add("active");
       });
     });
   </script>

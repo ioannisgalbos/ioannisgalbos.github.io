@@ -80,29 +80,35 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5%; /* Space between text and image */
   text-align: left;
-  padding: 0 0 100px; /* Extra bottom for footer */
+  padding-left: 0; /* Removed for centering */
   overflow-y: auto;
   z-index: 1;
 }
 
-.content-left {
-  max-width: 35%;
-  height: 100%;
-  overflow-y: auto; /* Scroll if content long */
-  padding: 0 20px;
-}
-
 .panel {
-  display: none; /* Hide by default */
+  position: absolute;
+  left: 25%; /* Adjusted to move more toward center while staying on left */
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  max-width: 35%;
+  max-height: calc(100vh - 200px); /* Limit height to fit between nav and footer */
+  padding: 40px;
   opacity: 0;
   transition: opacity 0.6s ease;
+  z-index: 2;
+  overflow-y: auto; /* Scroll for long content */
+}
+
+/* Hide non-active panels */
+.panel:not(.active) {
+  display: none;
 }
 
 .panel.active {
-  display: block;
   opacity: 1;
+  display: block;
 }
 
 h1 {
@@ -133,8 +139,14 @@ iframe {
 
 /* STATIC IMAGE */
 .static-profile-img {
+  position: fixed;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
   max-width: 45%;
   height: auto;
+  z-index: 5;
 }
 
 /* FOOTER */
@@ -143,7 +155,7 @@ footer {
   bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
-  -webkit-transform: translateX(-50%); /* Safari fix */
+  -webkit-transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -193,14 +205,6 @@ footer {
     align-items: center;
     justify-content: flex-start;
     overflow: visible; /* Ensure content shows */
-    gap: 0; /* Remove gap on mobile */
-  }
-
-  .content-left {
-    max-width: 100%;
-    height: auto;
-    overflow: visible;
-    padding: 0;
   }
 
   .panel {

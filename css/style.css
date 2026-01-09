@@ -37,7 +37,7 @@ html, body {
   animation-delay: 7s;
 }
 
-/* Overlay for readability */
+/* Overlay */
 .overlay {
   position: absolute;
   inset: 0;
@@ -83,7 +83,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 120px 10% 160px;
+  padding: 120px 10% 180px;
   text-align: center;
 }
 
@@ -140,9 +140,10 @@ footer {
   width: 300px;
   height: 1px;
   background: white;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
 }
 
+/* SOCIAL ICONS */
 .socials {
   display: flex;
   gap: 16px;
@@ -150,9 +151,14 @@ footer {
   flex-wrap: wrap;
 }
 
+.socials a {
+  display: inline-flex;
+}
+
 .socials img {
   width: 26px;
   height: auto;
+  background: none !important;     /* kills Beatport green overlay issue */
   opacity: 0.65;
   transition: opacity 0.3s ease;
 }
@@ -172,7 +178,7 @@ footer {
   }
 
   main {
-    padding: 140px 8% 180px;
+    padding: 140px 8% 200px;
   }
 
   footer {

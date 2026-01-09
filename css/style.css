@@ -3,6 +3,9 @@
 body {
   font-family: 'Inter', sans-serif;
   height: 100vh;
+  /* Prevent browser-level bounce/scroll on mobile */
+  position: fixed; 
+  width: 100%;
   overflow: hidden;
 }
 
@@ -14,7 +17,8 @@ body {
   padding: 30px;
   position: relative;
   z-index: 10;
-  animation: textColorShift 16s infinite;
+  /* Switches text from white to black to match background color shift */
+  animation: textColorShift 20s infinite;
 }
 
 @keyframes textColorShift {
@@ -50,24 +54,23 @@ main {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding: 20px 0;
 }
 
 .panel {
   display: none;
   text-align: center;
   width: 100%;
-  max-width: 700px;
+  max-width: 600px;
   animation: fadeIn 0.8s ease forwards;
 }
 
 .panel.active { display: block; }
 
-/* MUSIC AREA SCROLLING */
 .music-scroll-area {
-  max-height: 60vh;
+  max-height: 55vh;
   overflow-y: auto;
   padding: 10px;
-  /* Hide scrollbar for aesthetics */
   scrollbar-width: none; 
 }
 .music-scroll-area::-webkit-scrollbar { display: none; }
@@ -75,13 +78,12 @@ main {
 .music-stack iframe {
   margin-bottom: 15px;
   border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-h1 { font-size: clamp(2rem, 7vw, 3.5rem); font-weight: 200; }
-.tagline { font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase; margin-top: 10px; }
+h1 { font-size: clamp(2rem, 7vw, 3.5rem); font-weight: 200; letter-spacing: -2px;}
+.tagline { font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase; margin-top: 10px; opacity: 0.8; }
 h2 { font-size: 1.4rem; font-weight: 400; text-transform: uppercase; margin-bottom: 20px; }
-p { line-height: 1.8; }
+p { line-height: 1.8; font-weight: 300; }
 
 .email-btn {
   color: inherit;
@@ -90,25 +92,63 @@ p { line-height: 1.8; }
   padding: 12px 25px;
   font-size: 0.8rem;
   text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-footer { flex: 0 0 auto; padding-top: 20px; }
-.socials { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+/* FOOTER LOGIC - MOBILE FIX */
+footer {
+  flex: 0 0 auto;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.socials {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
 
 .socials img {
-  width: 22px;
+  width: 24px; /* Slightly larger for easier mobile tapping */
   height: auto;
-  transition: transform 0.3s;
-  /* Reduced opacity so they blend, but NO color inversion */
-  opacity: 0.8;
-  /* Subtle drop shadow helps them stay visible on white backgrounds */
-  filter: drop-shadow(0px 0px 2px rgba(0,0,0,0.3));
+  transition: transform 0.2s;
+  /* Icons now keep their original colors always */
+  opacity: 0.9;
 }
 
-.socials a:hover img { transform: scale(1.2); opacity: 1; }
+.socials a:hover img {
+  transform: scale(1.15);
+  opacity: 1;
+}
 
+/* MOBILE ADAPTATIONS */
 @media (max-width: 768px) {
-  .main-wrapper { padding: 15px; }
-  nav { gap: 10px; flex-wrap: wrap; }
+  .main-wrapper { 
+    padding: 15px; 
+    justify-content: space-between; 
+  }
+  
+  nav { 
+    gap: 12px; 
+    padding-top: 10px;
+  }
+  
+  nav a { font-size: 0.7rem; }
+  
   h1 { font-size: 2.2rem; }
+
+  .music-scroll-area {
+    max-height: 50vh; /* Adjusting for small mobile screens */
+  }
+
+  /* Make sure footer stays at bottom but doesn't overlap */
+  footer {
+    padding-top: 15px;
+  }
+
+  .socials {
+    gap: 18px; /* Bigger gaps for mobile fingers */
+  }
 }

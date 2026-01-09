@@ -12,59 +12,68 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    /* Full-screen Background Logic */
+    /* BACKGROUND CONTAINER LOGIC */
     .bg-container {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
       z-index: -2;
-      background: #000;
-      overflow: hidden;
+      /* Syncs background color with the image cycle: Black for bg1, White for bg2 */
+      animation: bgColorShift 16s infinite;
     }
 
     .bg-img {
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background-size: cover;
+      /* 'contain' ensures the whole image is visible without cropping */
+      background-size: contain; 
+      background-repeat: no-repeat;
       background-position: center;
       opacity: 0;
       transition: opacity 3s ease-in-out;
-      transform: scale(1.05); /* Slight zoom for a cinematic look */
-      animation: kenBurns 30s infinite alternate;
     }
 
+    /* BG1: Dark theme (Black background) */
     .bg-1 {
       background-image: url('https://github.com/ioannisgalbos/ioannisgalbos.github.io/blob/main/images/bg1.jpg?raw=true');
       animation: crossfade-1 16s infinite;
     }
 
+    /* BG2: Light theme (White background) */
     .bg-2 {
       background-image: url('https://github.com/ioannisgalbos/ioannisgalbos.github.io/blob/main/images/bg2.jpg?raw=true');
       animation: crossfade-2 16s infinite;
     }
 
+    @keyframes bgColorShift {
+      0%, 45% { background-color: #000000; } 
+      55%, 100% { background-color: #ffffff; }
+    }
+
     @keyframes crossfade-1 {
-      0%, 40% { opacity: 1; }
-      60%, 100% { opacity: 0; }
+      0%, 45% { opacity: 1; }
+      55%, 100% { opacity: 0; }
     }
 
     @keyframes crossfade-2 {
-      0%, 40% { opacity: 0; }
-      60%, 100% { opacity: 1; }
+      0%, 45% { opacity: 0; }
+      55%, 100% { opacity: 1; }
     }
 
-    @keyframes kenBurns {
-      from { transform: scale(1.05); }
-      to { transform: scale(1.15); }
-    }
-
+    /* Subtlest possible overlay for text pop */
     .overlay {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.3); /* Adjust darkness of photos here */
       z-index: -1;
+      pointer-events: none;
+      animation: overlayShift 16s infinite;
+    }
+
+    @keyframes overlayShift {
+      0%, 45% { background: rgba(0,0,0,0.05); }
+      55%, 100% { background: rgba(0,0,0,0.1); } 
     }
   </style>
 </head>
@@ -102,7 +111,7 @@
       <section id="discography" class="panel">
         <div class="content-limit">
           <div class="music-stack">
-            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%3Aplaylists%3A2171111465%3Fsecret_token%3Ds-GejCYioKyrM&color=%23ffffff&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe>
+            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%3Aplaylists%3A2171111465%3Fsecret_token%3Ds-GejCYioKyrM&color=%23000000&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe>
           </div>
         </div>
       </section>

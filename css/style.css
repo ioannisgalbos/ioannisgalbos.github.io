@@ -41,12 +41,12 @@ html, body {
    Path goes: "exit css folder (..)" -> "enter images folder" 
 */
 .bg-1 {
-  background-image: url("../images/bg1.jpg");
+  background-image: url("images/bg1.jpg");
   animation-delay: 0s;
 }
 
 .bg-2 {
-  background-image: url("../images/bg2.jpg");
+  background-image: url("images/bg2.jpg");
   animation-delay: 10s;
 }
 

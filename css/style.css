@@ -1,37 +1,34 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html, body {
-  height: 100%;
+body {
+  font-family: 'Inter', sans-serif;
+  height: 100vh;
   width: 100%;
   overflow: hidden;
-  /* Removed background-color here so it doesn't block the bg-container */
-  font-family: 'Inter', sans-serif;
+  background-color: #000;
 }
 
 .main-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100dvh; 
+  height: 100vh;
   width: 100%;
   padding: 20px;
   position: relative;
-  z-index: 10; /* Ensures content is above the background images */
-  background: transparent; /* Must be transparent! */
-  animation: textColorShift 30s infinite;
+  z-index: 10;
+  animation: textColorShift 20s infinite;
 }
 
 @keyframes textColorShift {
-  0%, 40% { color: #ffffff; }
-  60%, 100% { color: #000000; }
+  0%, 45% { color: #ffffff; }
+  55%, 100% { color: #000000; }
 }
 
 nav {
-  flex: 0 0 auto;
   display: flex;
   justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
+  gap: 20px;
+  flex: 0 0 auto;
   padding: 10px 0;
 }
 
@@ -41,7 +38,7 @@ nav a {
   opacity: 0.6;
   text-transform: uppercase;
   font-size: 0.7rem;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
 }
 
 nav a.active-link {
@@ -50,11 +47,11 @@ nav a.active-link {
 }
 
 main {
-  flex: 1 1 auto;
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 0;
+  overflow: hidden;
 }
 
 .panel {
@@ -62,24 +59,28 @@ main {
   text-align: center;
   width: 100%;
   max-width: 600px;
+  animation: fadeIn 0.8s ease forwards;
 }
 
-.panel.active { display: block; animation: fadeIn 0.8s ease; }
-
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.panel.active { display: block; }
 
 .music-scroll-area {
-  max-height: 55dvh;
+  max-height: 50vh;
   overflow-y: auto;
   padding: 10px;
-  scrollbar-width: none;
+  scrollbar-width: none; 
 }
 .music-scroll-area::-webkit-scrollbar { display: none; }
 
-.music-stack iframe { margin-bottom: 15px; border-radius: 8px; border: none; }
+.music-stack iframe {
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
 
-h1 { font-size: clamp(1.8rem, 6vw, 3rem); font-weight: 200; }
+h1 { font-size: clamp(1.8rem, 6vw, 3rem); font-weight: 200; letter-spacing: -1px;}
 .tagline { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 5px; opacity: 0.8; }
+h2 { font-size: 1.2rem; font-weight: 400; text-transform: uppercase; margin-bottom: 15px; }
+p { line-height: 1.6; font-weight: 300; font-size: 0.95rem; }
 
 .email-btn {
   color: inherit;
@@ -88,14 +89,14 @@ h1 { font-size: clamp(1.8rem, 6vw, 3rem); font-weight: 200; }
   padding: 10px 20px;
   font-size: 0.75rem;
   text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
+/* FOOTER - ENSURING VISIBILITY ON MOBILE */
 footer {
   flex: 0 0 auto;
-  width: 100%;
   padding: 20px 0;
-  display: flex;
-  justify-content: center;
+  width: 100%;
 }
 
 .socials {
@@ -103,16 +104,38 @@ footer {
   gap: 12px;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
 }
 
 .socials img {
   width: 22px;
-  height: 22px;
-  object-fit: contain;
+  height: auto;
+  transition: transform 0.2s;
+  opacity: 1; /* Keep original colors */
 }
 
-@media (max-width: 480px) {
-  .main-wrapper { padding: 10px; }
-  .music-scroll-area { max-height: 45dvh; }
-  .socials img { width: 20px; height: 20px; }
+/* MOBILE SPECIFIC OVERRIDES */
+@media (max-width: 768px) {
+  .main-wrapper {
+    padding: 10px;
+  }
+  
+  nav {
+    gap: 10px;
+  }
+  
+  nav a { font-size: 0.6rem; }
+
+  /* On small screens, we strictly limit music height so it doesn't push footer out */
+  .music-scroll-area {
+    max-height: 45vh; 
+  }
+
+  .socials {
+    gap: 15px;
+  }
+
+  .socials img {
+    width: 20px;
+  }
 }

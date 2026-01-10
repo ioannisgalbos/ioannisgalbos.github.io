@@ -1,4 +1,4 @@
-/* --- DESKTOP STYLES (NO CHANGES) --- */
+/* --- DESKTOP STYLES --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
@@ -7,6 +7,19 @@ body {
   width: 100%;
   overflow: hidden;
   background-color: #000;
+}
+
+/* BACKGROUND DIMMER OVERLAY */
+.bg-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Adjust the 0.4 value to change darkness (0.1 is light, 0.9 is almost black) */
+  background-color: rgba(0, 0, 0, 0.4); 
+  z-index: -1; /* Sits above images but below content */
 }
 
 .main-wrapper {
@@ -114,20 +127,18 @@ footer {
   opacity: 1;
 }
 
-/* --- CONSOLIDATED MOBILE FIXES (APPLIES ONLY TO MOBILE) --- */
+/* --- CONSOLIDATED MOBILE FIXES --- */
 @media (max-width: 768px) {
   body {
-    /* Allow scrolling on mobile so you can reach the icons */
     overflow-y: auto !important;
     height: auto;
   }
 
   .main-wrapper {
-    /* height: auto lets the page grow to fit the content and icons */
     height: auto;
     min-height: 100dvh; 
     padding: 10px;
-    padding-bottom: 40px; /* Space for the icons at the very bottom */
+    padding-bottom: 40px; 
   }
 
   nav {
@@ -139,10 +150,9 @@ footer {
   }
 
   .music-scroll-area {
-    /* Prevent the music list from becoming infinitely long on mobile */
     max-height: 45vh;
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling for iPhone */
+    -webkit-overflow-scrolling: touch; 
   }
 
   .socials {
@@ -154,7 +164,6 @@ footer {
     width: 20px;
   }
 
-  /* Ensure the background images cover the full scrollable height */
   .bg-container {
     height: 100%;
     position: fixed;

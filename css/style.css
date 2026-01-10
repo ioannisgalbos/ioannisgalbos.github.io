@@ -30,7 +30,7 @@ body {
   
   /* DIMMING FIX: This dims the actual image files */
   /* 0.5 is 50% brightness. Lower is darker (e.g., 0.3), higher is brighter. */
-  filter: brightness(0.5); 
+  filter: brightness(0.6); 
 }
 
 .main-wrapper {

@@ -1,3 +1,4 @@
+/* --- DESKTOP STYLES (NO CHANGES) --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
@@ -68,7 +69,7 @@ main {
   max-height: 50vh;
   overflow-y: auto;
   padding: 10px;
-  scrollbar-width: none; 
+  scrollbar-width: none;
 }
 .music-scroll-area::-webkit-scrollbar { display: none; }
 
@@ -92,7 +93,6 @@ p { line-height: 1.6; font-weight: 300; font-size: 0.95rem; }
   letter-spacing: 2px;
 }
 
-/* FOOTER - ENSURING VISIBILITY ON MOBILE */
 footer {
   flex: 0 0 auto;
   padding: 20px 0;
@@ -111,62 +111,52 @@ footer {
   width: 22px;
   height: auto;
   transition: transform 0.2s;
-  opacity: 1; /* Keep original colors */
+  opacity: 1;
 }
 
-/* MOBILE SPECIFIC OVERRIDES */
+/* --- CONSOLIDATED MOBILE FIXES (APPLIES ONLY TO MOBILE) --- */
 @media (max-width: 768px) {
-  .main-wrapper {
-    padding: 10px;
+  body {
+    /* Allow scrolling on mobile so you can reach the icons */
+    overflow-y: auto !important;
+    height: auto;
   }
-  
+
+  .main-wrapper {
+    /* height: auto lets the page grow to fit the content and icons */
+    height: auto;
+    min-height: 100dvh; 
+    padding: 10px;
+    padding-bottom: 40px; /* Space for the icons at the very bottom */
+  }
+
   nav {
     gap: 10px;
   }
-  
-  nav a { font-size: 0.6rem; }
 
-  /* On small screens, we strictly limit music height so it doesn't push footer out */
+  nav a { 
+    font-size: 0.6rem; 
+  }
+
   .music-scroll-area {
-    max-height: 45vh; 
+    /* Prevent the music list from becoming infinitely long on mobile */
+    max-height: 45vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling for iPhone */
   }
 
   .socials {
     gap: 15px;
+    margin-top: 20px;
   }
 
   .socials img {
     width: 20px;
   }
-}
 
-/* Base styles for desktop */
-.hero {
-    background-image: url('your-background.jpg');
-    background-size: cover; /* Or 'contain' if it fits better */
-    background-position: center;
-    height: 80vh; /* Adjust as needed for desktop */
-    position: relative;
-}
-
-.icons-container {
-    display: flex;
-    justify-content: center;
-    margin-top: -50px; /* Negative margin to pull icons up over the image if overlapping is intended */
-    position: relative; /* Or absolute if positioned inside .hero */
-}
-
-/* Media query for mobile (adjust breakpoint as needed, e.g., max-width: 768px for tablets/phones) */
-@media (max-width: 768px) {
-    .hero {
-        background-size: contain; /* Scales to fit without cropping vertically */
-        background-repeat: no-repeat; /* Prevents tiling if image is small */
-        height: auto; /* Let it shrink based on content */
-        min-height: 50vh; /* Minimum to avoid collapsing too much */
-    }
-
-    .icons-container {
-        margin-top: -30px; /* Pull icons higher up on mobile */
-        padding-bottom: 20px; /* Add space if needed for scrolling */
-    }
+  /* Ensure the background images cover the full scrollable height */
+  .bg-container {
+    height: 100%;
+    position: fixed;
+  }
 }

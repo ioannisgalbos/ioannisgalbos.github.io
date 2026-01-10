@@ -12,14 +12,13 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    /* Background setup */
+    /* 1. Background setup - Animations removed */
     .bg-container {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
       z-index: -2;
-      background-color: #000; /* Initial color */
-      transition: background-color 1.5s ease-in-out; /* Smooth color transition */
+      background-color: #000; /* Base color remains black */
     }
 
     .bg-img {
@@ -30,11 +29,10 @@
       background-repeat: no-repeat;
       background-position: center;
       opacity: 0;
-      transition: opacity 1.5s ease-in-out; 
+      transition: opacity 1.5s ease-in-out; /* Smooth 1.5s transition */
       filter: brightness(0.5);
     }
-
-    /* Initial state: Image 1 is active */
+    /* Image 1 is visible by default */
     .bg-1 { 
       background-image: url('images/bg1.jpg'); 
       opacity: 1; 
@@ -42,18 +40,23 @@
     .bg-2 { 
       background-image: url('images/bg2.jpg'); 
     }
+
+    /* Class to handle the toggle */
+    .bg-img.active { opacity: 1; }
+    .bg-img.hidden { opacity: 0; }
   </style>
+
 </head>
 
 <body>
 
-  <div class="bg-container" id="bg-container">
+  <div class="bg-container">
     <div class="bg-img bg-1"></div>
     <div class="bg-img bg-2"></div>
   </div>
 
   <div class="main-wrapper">
-
+    
     <nav>
       <a href="#" data-panel="home" class="active-link">Home</a>
       <a href="#" data-panel="bio">Bio</a>
@@ -70,7 +73,7 @@
       <section id="bio" class="panel">
         <div class="content-limit">
           <h2>Bio</h2>
-          <p>Based in Stockholm, Ioannis Galbos crafts atmospheric electronic music rooted in deep textures and dancefloor energy. With releases on <strong>LAUS MUSIC</strong> and <strong>Juan's Kitchen Delights</strong>, his sound explores the many shades of techno and house.</p>
+          <p>Tracks released by LAUS MUSIC - London, Juan's Kitchen Delights - Skopje and 2 Rhythm 4 Record - UK. Now based in Stockholm, his musical journey began circa 2005 in Skopje, where he started crafting electronic music for the dancefloor. He has released several EPs on Juan’s Kitchen Delights Recordings, and has also appeared on LAUS Records and 2 Rhythm 4 Record. Some of his favorite artists include Lawrence (Sten) and Tim Paris, a fact that shows the many shades to be found in his work.</p>
         </div>
       </section>
 
@@ -111,32 +114,29 @@
   <script>
     const links = document.querySelectorAll("nav a");
     const panels = document.querySelectorAll(".panel");
-    const bgContainer = document.getElementById("bg-container");
     const bg1 = document.querySelector(".bg-1");
     const bg2 = document.querySelector(".bg-2");
-    
+  
     let currentBg = 1;
 
     links.forEach(link => {
       link.addEventListener("click", e => {
         e.preventDefault();
-        
+      
         // Toggle Panels
         links.forEach(l => l.classList.remove("active-link"));
         link.classList.add("active-link");
         panels.forEach(p => p.classList.remove("active"));
         document.getElementById(link.dataset.panel).classList.add("active");
 
-        // Toggle Background Images AND Container Color on Click
+        // Toggle Background Images on Click
         if (currentBg === 1) {
           bg1.style.opacity = "0";
           bg2.style.opacity = "1";
-          bgContainer.style.backgroundColor = "#ffffff"; // Change to white
           currentBg = 2;
         } else {
           bg1.style.opacity = "1";
           bg2.style.opacity = "0";
-          bgContainer.style.backgroundColor = "#000000"; // Change to black
           currentBg = 1;
         }
       });

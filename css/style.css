@@ -18,7 +18,7 @@ body {
   width: 100%;
   height: 100%;
   /* Adjust the 0.4 value to change darkness (0.1 is light, 0.9 is almost black) */
-  background-color: rgba(0, 0, 0, 0.7); 
+  background-color: rgba(0, 0, 0, 0.9); 
   z-index: -1; /* Sits above images but below content */
 }
 

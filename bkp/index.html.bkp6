@@ -12,40 +12,43 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    /* 1. Background setup - Animations removed */
     .bg-container {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
       z-index: -2;
-      background-color: #000; /* Base color remains black */
+      animation: bgColorShift 20s infinite;
     }
 
     .bg-img {
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background-size: contain;
+      background-size: contain; 
       background-repeat: no-repeat;
       background-position: center;
       opacity: 0;
-      transition: opacity 1.5s ease-in-out; /* Smooth 1.5s transition */
-      filter: brightness(0.5);
-    }
-    /* Image 1 is visible by default */
-    .bg-1 { 
-      background-image: url('images/bg1.jpg'); 
-      opacity: 1; 
-    }
-    .bg-2 { 
-      background-image: url('images/bg2.jpg'); 
+      transition: opacity 6s ease-in-out; 
     }
 
-    /* Class to handle the toggle */
-    .bg-img.active { opacity: 1; }
-    .bg-img.hidden { opacity: 0; }
+    .bg-1 {
+      background-image: url('https://github.com/ioannisgalbos/ioannisgalbos.github.io/blob/main/images/bg1.jpg?raw=true');
+      animation: crossfade-1 20s infinite;
+    }
+
+    .bg-2 {
+      background-image: url('https://github.com/ioannisgalbos/ioannisgalbos.github.io/blob/main/images/bg2.jpg?raw=true');
+      animation: crossfade-2 20s infinite;
+    }
+
+    @keyframes bgColorShift {
+      0%, 45% { background-color: #000000; } 
+      55%, 100% { background-color: #ffffff; }
+    }
+
+    @keyframes crossfade-1 { 0%, 45% { opacity: 1; } 55%, 100% { opacity: 0; } }
+    @keyframes crossfade-2 { 0%, 45% { opacity: 0; } 55%, 100% { opacity: 1; } }
   </style>
-
 </head>
 
 <body>
@@ -114,31 +117,14 @@
   <script>
     const links = document.querySelectorAll("nav a");
     const panels = document.querySelectorAll(".panel");
-    const bg1 = document.querySelector(".bg-1");
-    const bg2 = document.querySelector(".bg-2");
-  
-    let currentBg = 1;
 
     links.forEach(link => {
       link.addEventListener("click", e => {
         e.preventDefault();
-      
-        // Toggle Panels
         links.forEach(l => l.classList.remove("active-link"));
         link.classList.add("active-link");
         panels.forEach(p => p.classList.remove("active"));
         document.getElementById(link.dataset.panel).classList.add("active");
-
-        // Toggle Background Images on Click
-        if (currentBg === 1) {
-          bg1.style.opacity = "0";
-          bg2.style.opacity = "1";
-          currentBg = 2;
-        } else {
-          bg1.style.opacity = "1";
-          bg2.style.opacity = "0";
-          currentBg = 1;
-        }
       });
     });
   </script>

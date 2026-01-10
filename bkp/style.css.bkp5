@@ -9,28 +9,17 @@ body {
   background-color: #000;
 }
 
-.bg-container {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: -2;
-  animation: bgColorShift 20s infinite;
-}
-
-.bg-img {
+/* BACKGROUND DIMMER OVERLAY */
+.bg-container::after {
+  content: "";
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 6s ease-in-out;
-  
-  /* DIMMING FIX: This dims the actual image files */
-  /* 0.5 is 50% brightness. Lower is darker (e.g., 0.3), higher is brighter. */
-  filter: brightness(0.5); 
+  /* Adjust the 0.4 value to change darkness (0.1 is light, 0.9 is almost black) */
+  background-color: rgba(0, 0, 0, 0.9); 
+  z-index: -1; /* Sits above images but below content */
 }
 
 .main-wrapper {

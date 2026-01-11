@@ -4,23 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ioannis Galbos</title>
-  <link rel="icon" type="image/png" href="favicon.png">
- 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="icon" type="image/png" href="favicon.png"> <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    /* Background setup */
+    /* Background setup [cite: 51, 52] */
     .bg-container {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
       z-index: -2;
       background-color: #000;
-      transition: background-color 1.5s ease-in-out;
+      transition: background-color 1.5s ease-in-out; [cite: 53]
     }
 
     .bg-img {
@@ -32,9 +30,10 @@
       background-position: center;
       opacity: 0;
       transition: opacity 1.5s ease-in-out;
-      filter: brightness(0.5);
+      filter: brightness(0.5); [cite: 54, 55]
     }
 
+    /* Initial state [cite: 56, 57] */
     .bg-1 {
       background-image: url('images/bg1.jpg');
       opacity: 1;
@@ -54,10 +53,6 @@
 
   <div class="main-wrapper">
 
-    <div class="bottom-right-widget">
-      <iframe scrolling="no" style="border: 0; width: 100%; height: 50px;" src="https://bandcamp.com/band_follow_button_deluxe/3017892592"></iframe>
-    </div>
-
     <nav>
       <a href="#" data-panel="home" class="active-link">Home</a>
       <a href="#" data-panel="bio">Bio</a>
@@ -75,7 +70,7 @@
         <div class="content-limit">
           <h2>Bio</h2>
           <p>Ioannis Galbos / Stockholm, Swedend</p>
-          <p>Tracks released by LAUS MUSIC - London, Juan's Kitchen Delights - Skopje and 2 Rhythm 4 Record - UK. Now based in Stockholm, his musical journey began circa 2005 in Skopje, where he started crafting electronic music for the dancefloor. He has released several EPs on Juan’s Kitchen Delights Recordings, and has also appeared on LAUS Records and 2 Rhythm 4 Record. Some of his favorite artists include Lawrence (Sten) and Tim Paris, a fact that shows the many shades to be found in his work.</p>
+          <p>Tracks released by LAUS MUSIC - London, Juan's Kitchen Delights - Skopje and 2 Rhythm 4 Record - UK. Now based in Stockholm, his musical journey began circa 2005 in Skopje, where he started crafting electronic music for the dancefloor. [cite: 58, 59, 60, 61]</p>
         </div>
       </section>
 
@@ -109,12 +104,16 @@
         <a href="https://music.apple.com/us/artist/ioannis-galbos/1594453757" target="_blank"><img src="icons/applemusic.png" alt="Apple Music"></a>
         <a href="https://www.junodownload.com/artists/Ioannis+Galbos/releases/" target="_blank"><img src="icons/junodownload.png" alt="Juno Download"></a>
       </div>
+      
+      <div class="bandcamp-footer-widget">
+        <iframe scrolling="no" style="border: 0; width: 200px; height: 50px;" src="https://bandcamp.com/band_follow_button_deluxe/3017892592"></iframe>
+      </div>
     </footer>
 
   </div>
 
   <script>
-    const links = document.querySelectorAll("nav a");
+    const links = document.querySelectorAll("nav a"); [cite: 65]
     const panels = document.querySelectorAll(".panel");
     const bgContainer = document.getElementById("bg-container");
     const bg1 = document.querySelector(".bg-1");
@@ -130,6 +129,7 @@
         panels.forEach(p => p.classList.remove("active"));
         document.getElementById(link.dataset.panel).classList.add("active");
 
+        /* Toggle Background Images and Color [cite: 67, 68] */
         if (currentBg === 1) {
           bg1.style.opacity = "0";
           bg2.style.opacity = "1";

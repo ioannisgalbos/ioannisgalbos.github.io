@@ -17,26 +17,17 @@ body {
   padding: 20px;
   position: relative;
   z-index: 10;
-  /* Default white text */
+  /* DEFAULT TEXT COLOR: Always White for content */
   color: #ffffff;
   text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6);
   transition: color 1.5s ease;
 }
 
-/* --- LIGHT MODE OVERRIDES (Turns text black) --- */
-.main-wrapper.light-mode {
+/* --- LIGHT MODE OVERRIDES --- */
+/* ONLY changes Navigation Links to Black */
+.main-wrapper.light-mode nav a {
   color: #000000 !important;
   text-shadow: none;
-}
-
-/* Force black color on specific elements in light mode */
-.main-wrapper.light-mode nav a,
-.main-wrapper.light-mode .tagline,
-.main-wrapper.light-mode p,
-.main-wrapper.light-mode .email-btn,
-.main-wrapper.light-mode .copyright {
-  color: #000000 !important;
-  border-color: #000000;
 }
 
 .main-wrapper.light-mode nav a.active-link {
@@ -54,7 +45,7 @@ nav {
 
 nav a {
   text-decoration: none;
-  color: #ffffff !important;
+  color: #ffffff !important; /* White by default */
   opacity: 0.7;
   text-transform: uppercase;
   font-size: 0.7rem;
@@ -142,13 +133,13 @@ footer {
   opacity: 1;
 }
 
-/* Copyright Styling */
 .copyright {
-  font-size: 0.55rem; /* Small size */
+  font-size: 0.55rem;
   opacity: 0.6;
   text-align: center;
   letter-spacing: 1px;
-  margin-top: 5px; /* Creates the 'central right below' feel */
+  margin-top: 5px;
+  color: #ffffff; /* Explicitly keeping this white */
 }
 
 /* --- MOBILE SPECIFIC --- */

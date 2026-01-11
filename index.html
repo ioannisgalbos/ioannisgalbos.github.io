@@ -18,7 +18,7 @@
       top: 0; left: 0;
       width: 100%; height: 100%;
       z-index: -2;
-      background-color: #000; /* Initial color */
+      background-color: #000; 
       transition: background-color 1.5s ease-in-out;
     }
 
@@ -34,7 +34,6 @@
       filter: brightness(0.5);
     }
 
-    /* Initial state: Image 1 is active */
     .bg-1 {
       background-image: url('images/bg1.jpg');
       opacity: 1;
@@ -119,7 +118,7 @@
     const links = document.querySelectorAll("nav a");
     const panels = document.querySelectorAll(".panel");
     const bgContainer = document.getElementById("bg-container");
-    const mainWrapper = document.getElementById("main-wrapper"); // New reference
+    const mainWrapper = document.getElementById("main-wrapper");
     const bg1 = document.querySelector(".bg-1");
     const bg2 = document.querySelector(".bg-2");
 
@@ -134,18 +133,18 @@
         panels.forEach(p => p.classList.remove("active"));
         document.getElementById(link.dataset.panel).classList.add("active");
 
-        // Toggle Backgrounds and Switch to Light Mode (Black Text)
+        // Toggle Backgrounds and apply Light Mode class
         if (currentBg === 1) {
           bg1.style.opacity = "0";
           bg2.style.opacity = "1";
           bgContainer.style.backgroundColor = "#ffffff";
-          mainWrapper.classList.add("light-mode"); // Adds black text class
+          mainWrapper.classList.add("light-mode"); 
           currentBg = 2;
         } else {
           bg1.style.opacity = "1";
           bg2.style.opacity = "0";
           bgContainer.style.backgroundColor = "#000000";
-          mainWrapper.classList.remove("light-mode"); // Removes black text class
+          mainWrapper.classList.remove("light-mode");
           currentBg = 1;
         }
       });

@@ -17,18 +17,10 @@ body {
   padding: 20px;
   position: relative;
   z-index: 10;
+  
+  /* Text Clarity: Fixed white color with shadow */
   color: #ffffff;
-  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6);
-}
-
-/* Positioning the Bandcamp Widget */
-.top-left-widget {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 100;
-  width: 200px;
-  height: 50px;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6); 
 }
 
 nav {
@@ -102,6 +94,7 @@ p { line-height: 1.6; font-weight: 300; font-size: 0.95rem; color: #ffffff !impo
   letter-spacing: 2px;
 }
 
+/* FOOTER */
 footer {
   flex: 0 0 auto;
   padding: 20px 0;
@@ -132,30 +125,18 @@ footer {
 
   .main-wrapper {
     height: auto;
-    min-height: 100dvh;
+    min-height: 100dvh; 
     padding: 10px;
-    padding-bottom: 40px;
+    padding-bottom: 40px; 
   }
 
-  /* Adjust widget for mobile */
-  .top-left-widget {
-    top: 10px;
-    left: 10px;
-    transform: scale(0.8);
-    transform-origin: top left;
-  }
-
-  nav { 
-    gap: 10px; 
-    padding-top: 50px; /* Space for the scaled widget */
-  }
-
+  nav { gap: 10px; }
   nav a { font-size: 0.6rem; }
 
   .music-scroll-area {
     max-height: 45vh;
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch; 
   }
 
   .socials {

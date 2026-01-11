@@ -17,23 +17,12 @@ body {
   padding: 20px;
   position: relative;
   z-index: 10;
-  /* DEFAULT TEXT COLOR: Always White for content */
-  color: #ffffff;
+  color: #ffffff; /* Always white for content */
   text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6);
   transition: color 1.5s ease;
 }
 
-/* --- LIGHT MODE OVERRIDES --- */
-/* ONLY changes Navigation Links to Black */
-.main-wrapper.light-mode nav a {
-  color: #000000 !important;
-  text-shadow: none;
-}
-
-.main-wrapper.light-mode nav a.active-link {
-  border-bottom: 1px solid #000000;
-}
-/* -------------------------------------------------- */
+/* Note: Light Mode Overrides removed from here */
 
 nav {
   display: flex;
@@ -45,7 +34,7 @@ nav {
 
 nav a {
   text-decoration: none;
-  color: #ffffff !important; /* White by default */
+  color: #ffffff !important;
   opacity: 0.7;
   text-transform: uppercase;
   font-size: 0.7rem;
@@ -107,7 +96,6 @@ p { line-height: 1.6; font-weight: 300; font-size: 0.95rem; color: #ffffff !impo
   letter-spacing: 2px;
 }
 
-/* FOOTER */
 footer {
   flex: 0 0 auto;
   padding: 20px 0;
@@ -139,7 +127,7 @@ footer {
   text-align: center;
   letter-spacing: 1px;
   margin-top: 5px;
-  color: #ffffff; /* Explicitly keeping this white */
+  color: #ffffff;
 }
 
 /* --- MOBILE SPECIFIC --- */
@@ -154,6 +142,16 @@ footer {
     min-height: 100dvh;
     padding: 10px;
     padding-bottom: 40px;
+  }
+
+  /* LIGHT MODE - MOBILE ONLY */
+  .main-wrapper.light-mode nav a {
+    color: #000000 !important;
+    text-shadow: none;
+  }
+
+  .main-wrapper.light-mode nav a.active-link {
+    border-bottom: 1px solid #000000;
   }
 
   nav { gap: 10px; }

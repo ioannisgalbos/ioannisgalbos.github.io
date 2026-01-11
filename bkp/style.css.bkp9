@@ -18,30 +18,10 @@ body {
   position: relative;
   z-index: 10;
   
-  /* Default Text (Dark Mode) */
+  /* Text Clarity: Fixed white color with shadow */
   color: #ffffff;
   text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6); 
-  transition: color 1.5s ease; /* Smooth text color transition */
 }
-
-/* --- LIGHT MODE (Active when Background is White) --- */
-.main-wrapper.light-mode {
-  color: #000000 !important;
-  text-shadow: none;
-}
-
-.main-wrapper.light-mode nav a,
-.main-wrapper.light-mode .tagline,
-.main-wrapper.light-mode p,
-.main-wrapper.light-mode .email-btn {
-  color: #000000 !important;
-  border-color: #000000;
-}
-
-.main-wrapper.light-mode nav a.active-link {
-  border-bottom: 1px solid #000000;
-}
-/* -------------------------------------------------- */
 
 nav {
   display: flex;
@@ -58,7 +38,6 @@ nav a {
   text-transform: uppercase;
   font-size: 0.7rem;
   letter-spacing: 2px;
-  transition: color 1.5s ease;
 }
 
 nav a.active-link {
@@ -120,10 +99,6 @@ footer {
   flex: 0 0 auto;
   padding: 20px 0;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
 }
 
 .socials {
@@ -139,15 +114,6 @@ footer {
   height: auto;
   transition: transform 0.2s;
   opacity: 1;
-}
-
-/* Copyright Text Styling */
-.copyright {
-  font-size: 0.6rem;
-  opacity: 0.6;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-top: 5px;
 }
 
 /* --- MOBILE SPECIFIC --- */
@@ -175,7 +141,7 @@ footer {
 
   .socials {
     gap: 15px;
-    margin-top: 10px;
+    margin-top: 20px;
   }
 
   .socials img { width: 20px; }

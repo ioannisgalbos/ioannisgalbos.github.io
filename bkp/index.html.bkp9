@@ -19,7 +19,7 @@
       width: 100%; height: 100%;
       z-index: -2;
       background-color: #000; /* Initial color */
-      transition: background-color 1.5s ease-in-out; 
+      transition: background-color 1.5s ease-in-out; /* Smooth color transition */
     }
 
     .bg-img {
@@ -52,7 +52,7 @@
     <div class="bg-img bg-2"></div>
   </div>
 
-  <div class="main-wrapper" id="main-wrapper">
+  <div class="main-wrapper">
 
     <nav>
       <a href="#" data-panel="home" class="active-link">Home</a>
@@ -71,8 +71,7 @@
         <div class="content-limit">
           <h2>Bio</h2>
           <p>Ioannis Galbos / Stockholm, Sweden</p>
-          <p>Tracks released by LAUS MUSIC - London, Juan's Kitchen Delights - Skopje and 2 Rhythm 4 Record - UK.</p>
-          <p>Now based in Stockholm, his musical journey began circa 2005 in Skopje, where he started crafting electronic music for the dancefloor. He has released several EPs on Juan’s Kitchen Delights Recordings, and has also appeared on LAUS Records and 2 Rhythm 4 Record. Some of his favorite artists include Lawrence (Sten) and Tim Paris, a fact that shows the many shades to be found in his work.</p>
+          <p>Tracks released by LAUS MUSIC - London, Juan's Kitchen Delights - Skopje and 2 Rhythm 4 Record - UK. Now based in Stockholm, his musical journey began circa 2005 in Skopje, where he started crafting electronic music for the dancefloor. He has released several EPs on Juan’s Kitchen Delights Recordings, and has also appeared on LAUS Records and 2 Rhythm 4 Record. Some of his favorite artists include Lawrence (Sten) and Tim Paris, a fact that shows the many shades to be found in his work.</p>
         </div>
       </section>
 
@@ -106,10 +105,7 @@
         <a href="https://music.apple.com/us/artist/ioannis-galbos/1594453757" target="_blank"><img src="icons/applemusic.png" alt="Apple Music"></a>
         <a href="https://www.junodownload.com/artists/Ioannis+Galbos/releases/" target="_blank"><img src="icons/junodownload.png" alt="Juno Download"></a>
         <a href="https://instagram.com/ioannisgalbos" target="_blank"><img src="icons/instagram.png" alt="Instagram"></a>
-      </div>
-      
-      <div class="copyright">
-        &copy; 2024 Ioannis Galbos. All rights reserved.
+
       </div>
     </footer>
 
@@ -119,7 +115,6 @@
     const links = document.querySelectorAll("nav a");
     const panels = document.querySelectorAll(".panel");
     const bgContainer = document.getElementById("bg-container");
-    const mainWrapper = document.getElementById("main-wrapper");
     const bg1 = document.querySelector(".bg-1");
     const bg2 = document.querySelector(".bg-2");
     
@@ -135,20 +130,16 @@
         panels.forEach(p => p.classList.remove("active"));
         document.getElementById(link.dataset.panel).classList.add("active");
 
-        // Toggle Background Images, Container Color AND Text Color
+        // Toggle Background Images AND Container Color on Click
         if (currentBg === 1) {
-          // Switch to White Theme
           bg1.style.opacity = "0";
           bg2.style.opacity = "1";
-          bgContainer.style.backgroundColor = "#ffffff"; 
-          mainWrapper.classList.add("light-mode"); // Turn text black
+          bgContainer.style.backgroundColor = "#ffffff"; // Change to white
           currentBg = 2;
         } else {
-          // Switch to Dark Theme
           bg1.style.opacity = "1";
           bg2.style.opacity = "0";
-          bgContainer.style.backgroundColor = "#000000"; 
-          mainWrapper.classList.remove("light-mode"); // Turn text white
+          bgContainer.style.backgroundColor = "#000000"; // Change to black
           currentBg = 1;
         }
       });

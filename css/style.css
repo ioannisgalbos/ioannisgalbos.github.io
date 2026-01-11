@@ -17,23 +17,24 @@ body {
   padding: 20px;
   position: relative;
   z-index: 10;
-  
-  /* Default Text (Dark Mode) */
+  /* Default white text */
   color: #ffffff;
-  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6); 
-  transition: color 1.5s ease; /* Smooth text color transition */
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6);
+  transition: color 1.5s ease;
 }
 
-/* --- LIGHT MODE (Active when Background is White) --- */
+/* --- LIGHT MODE OVERRIDES (Turns text black) --- */
 .main-wrapper.light-mode {
   color: #000000 !important;
   text-shadow: none;
 }
 
+/* Force black color on specific elements in light mode */
 .main-wrapper.light-mode nav a,
 .main-wrapper.light-mode .tagline,
 .main-wrapper.light-mode p,
-.main-wrapper.light-mode .email-btn {
+.main-wrapper.light-mode .email-btn,
+.main-wrapper.light-mode .copyright {
   color: #000000 !important;
   border-color: #000000;
 }
@@ -100,7 +101,7 @@ main {
   border: none;
 }
 
-h1 { font-size: clamp(1.8rem, 6vw, 3rem); font-weight: 200; letter-spacing: -1px;}
+h1 { font-size: clamp(1.8rem, 6vw, 3rem); font-weight: 200; letter-spacing: -1px; }
 .tagline { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 5px; opacity: 0.8; color: #ffffff !important; }
 h2 { font-size: 1.2rem; font-weight: 400; text-transform: uppercase; margin-bottom: 15px; }
 p { line-height: 1.6; font-weight: 300; font-size: 0.95rem; color: #ffffff !important; }
@@ -141,13 +142,13 @@ footer {
   opacity: 1;
 }
 
-/* Copyright Text Styling */
+/* Copyright Styling */
 .copyright {
-  font-size: 0.6rem;
+  font-size: 0.55rem; /* Small size */
   opacity: 0.6;
-  text-transform: uppercase;
+  text-align: center;
   letter-spacing: 1px;
-  margin-top: 5px;
+  margin-top: 5px; /* Creates the 'central right below' feel */
 }
 
 /* --- MOBILE SPECIFIC --- */
@@ -159,9 +160,9 @@ footer {
 
   .main-wrapper {
     height: auto;
-    min-height: 100dvh; 
+    min-height: 100dvh;
     padding: 10px;
-    padding-bottom: 40px; 
+    padding-bottom: 40px;
   }
 
   nav { gap: 10px; }
@@ -170,7 +171,7 @@ footer {
   .music-scroll-area {
     max-height: 45vh;
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch; 
+    -webkit-overflow-scrolling: touch;
   }
 
   .socials {

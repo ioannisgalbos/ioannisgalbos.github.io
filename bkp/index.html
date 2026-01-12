@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ioannis Galbos</title>
-
+  <link rel="icon" type="image/png" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
@@ -12,13 +12,14 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    /* 1. Background setup - Animations removed */
+    /* Background setup */
     .bg-container {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
       z-index: -2;
-      background-color: #000; /* Base color remains black */
+      background-color: #000; 
+      transition: background-color 1.5s ease-in-out;
     }
 
     .bg-img {
@@ -29,34 +30,29 @@
       background-repeat: no-repeat;
       background-position: center;
       opacity: 0;
-      transition: opacity 1.5s ease-in-out; /* Smooth 1.5s transition */
+      transition: opacity 1.5s ease-in-out;
       filter: brightness(0.5);
     }
-    /* Image 1 is visible by default */
-    .bg-1 { 
-      background-image: url('images/bg1.jpg'); 
-      opacity: 1; 
-    }
-    .bg-2 { 
-      background-image: url('images/bg2.jpg'); 
-    }
 
-    /* Class to handle the toggle */
-    .bg-img.active { opacity: 1; }
-    .bg-img.hidden { opacity: 0; }
+    .bg-1 {
+      background-image: url('images/bg1.jpg');
+      opacity: 1;
+    }
+    .bg-2 {
+      background-image: url('images/bg2.jpg');
+    }
   </style>
-
 </head>
 
 <body>
 
-  <div class="bg-container">
+  <div class="bg-container" id="bg-container">
     <div class="bg-img bg-1"></div>
     <div class="bg-img bg-2"></div>
   </div>
 
-  <div class="main-wrapper">
-    
+  <div class="main-wrapper" id="main-wrapper">
+
     <nav>
       <a href="#" data-panel="home" class="active-link">Home</a>
       <a href="#" data-panel="bio">Bio</a>
@@ -73,7 +69,9 @@
       <section id="bio" class="panel">
         <div class="content-limit">
           <h2>Bio</h2>
-          <p>Tracks released by LAUS MUSIC - London, Juan's Kitchen Delights - Skopje and 2 Rhythm 4 Record - UK. Now based in Stockholm, his musical journey began circa 2005 in Skopje, where he started crafting electronic music for the dancefloor. He has released several EPs on Juan’s Kitchen Delights Recordings, and has also appeared on LAUS Records and 2 Rhythm 4 Record. Some of his favorite artists include Lawrence (Sten) and Tim Paris, a fact that shows the many shades to be found in his work.</p>
+          <p>Ioannis Galbos / Stockholm, Sweden</p>
+          <p>Tracks released by LAUS MUSIC - London, Juan's Kitchen Delights - Skopje and 2 Rhythm 4 Record - UK.</p>
+          <p>Now based in Stockholm, his musical journey began circa 2005 in Skopje, where he started crafting electronic music for the dancefloor. He has released several EPs on Juan’s Kitchen Delights Recordings, and has also appeared on LAUS Records and 2 Rhythm 4 Record. Some of his favorite artists include Lawrence (Sten) and Tim Paris, a fact that shows the many shades to be found in his work.</p>
         </div>
       </section>
 
@@ -97,7 +95,7 @@
 
     <footer>
       <div class="socials">
-        <a href="https://instagram.com/ioannisgalbos" target="_blank"><img src="icons/instagram.png" alt="Instagram"></a>
+        <a href="https://ioannisgalbos.bandcamp.com/" target="_blank"><img src="icons/bandcamp.png" alt="Bandcamp"></a>
         <a href="https://soundcloud.com/ioannisgalbos" target="_blank"><img src="icons/soundcloud.svg" alt="Soundcloud"></a>
         <a href="https://www.youtube.com/@IoannisGalbos" target="_blank"><img src="icons/youtube.png" alt="Youtube"></a>
         <a href="https://open.spotify.com/artist/6sN8etgNcHGLmcrFZQH4Q4" target="_blank"><img src="icons/spotify.png" alt="Spotify"></a>
@@ -106,6 +104,11 @@
         <a href="https://www.discogs.com/artist/6166704-Ioannis-Galbos" target="_blank"><img src="icons/discogs.png" alt="Discogs"></a>
         <a href="https://music.apple.com/us/artist/ioannis-galbos/1594453757" target="_blank"><img src="icons/applemusic.png" alt="Apple Music"></a>
         <a href="https://www.junodownload.com/artists/Ioannis+Galbos/releases/" target="_blank"><img src="icons/junodownload.png" alt="Juno Download"></a>
+        <a href="https://instagram.com/ioannisgalbos" target="_blank"><img src="icons/instagram.png" alt="Instagram"></a>
+      </div>
+      
+      <div class="copyright">
+        © 2017 Ioannis Galbos. All rights reserved.
       </div>
     </footer>
 
@@ -114,29 +117,34 @@
   <script>
     const links = document.querySelectorAll("nav a");
     const panels = document.querySelectorAll(".panel");
+    const bgContainer = document.getElementById("bg-container");
+    const mainWrapper = document.getElementById("main-wrapper");
     const bg1 = document.querySelector(".bg-1");
     const bg2 = document.querySelector(".bg-2");
-  
-    let currentBg = 1;
 
+    let currentBg = 1;
     links.forEach(link => {
       link.addEventListener("click", e => {
         e.preventDefault();
-      
+
         // Toggle Panels
         links.forEach(l => l.classList.remove("active-link"));
         link.classList.add("active-link");
         panels.forEach(p => p.classList.remove("active"));
         document.getElementById(link.dataset.panel).classList.add("active");
 
-        // Toggle Background Images on Click
+        // Toggle Backgrounds and apply Light Mode class
         if (currentBg === 1) {
           bg1.style.opacity = "0";
           bg2.style.opacity = "1";
+          bgContainer.style.backgroundColor = "#ffffff";
+          mainWrapper.classList.add("light-mode"); 
           currentBg = 2;
         } else {
           bg1.style.opacity = "1";
           bg2.style.opacity = "0";
+          bgContainer.style.backgroundColor = "#000000";
+          mainWrapper.classList.remove("light-mode");
           currentBg = 1;
         }
       });

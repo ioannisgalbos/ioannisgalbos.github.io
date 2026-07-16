@@ -119,8 +119,6 @@ He has closely collaborated with the electronic music organisation Loomynum Coll
   <script>
     const links = document.querySelectorAll("nav a");
     const panels = document.querySelectorAll(".panel");
-    const bgContainer = document.getElementById("bg-container");
-    const mainWrapper = document.getElementById("main-wrapper");
     const bg1 = document.querySelector(".bg-1");
     const bg2 = document.querySelector(".bg-2");
 
@@ -135,18 +133,14 @@ He has closely collaborated with the electronic music organisation Loomynum Coll
         panels.forEach(p => p.classList.remove("active"));
         document.getElementById(link.dataset.panel).classList.add("active");
 
-        // Toggle Backgrounds and apply Light Mode class
+        // Toggle Backgrounds (Keeping everything strictly black)
         if (currentBg === 1) {
           bg1.style.opacity = "0";
           bg2.style.opacity = "1";
-          bgContainer.style.backgroundColor = "#ffffff";
-          mainWrapper.classList.add("light-mode"); 
           currentBg = 2;
         } else {
           bg1.style.opacity = "1";
           bg2.style.opacity = "0";
-          bgContainer.style.backgroundColor = "#000000";
-          mainWrapper.classList.remove("light-mode");
           currentBg = 1;
         }
       });

@@ -8,11 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    /* Background setup */
     .bg-container {
       position: fixed;
       top: 0; left: 0;
@@ -63,7 +61,7 @@
     <main>
       <section id="home" class="panel active">
         <h1>Ioannis Galbos</h1>
-        <p class="tagline">Electronic Music Artist</p>
+        <p class="tagline">Electronic Music Producer and Artist</p>
       </section>
 
       <section id="bio" class="panel">
@@ -89,9 +87,22 @@ He has closely collaborated with the electronic music organisation Loomynum Coll
         </div>
       </section>
 
+      <!-- UPDATED CONTACT SECTION -->
       <section id="impressum" class="panel">
         <h2>Contact</h2>
-        <a href="mailto:info@ioannisgalbos.se" class="email-btn">info@ioannisgalbos.se</a>
+        
+        <p>Ioannis Galbos<br>
+        Stockholm, Sweden</p>
+        
+        <p><a href="mailto:info@ioannisgalbos.se">info@ioannisgalbos.se</a></p>
+        
+        <p>For booking and professional inquiries, please use the email above.</p>
+        
+        <h3>Liability notice</h3>
+        <p>The content of this website has been created with the greatest possible care. However, I cannot guarantee the accuracy, completeness, or timeliness of the information provided. I am not liable for any damages arising from the use of this website, unless caused by gross negligence or intent.</p>
+        
+        <h3>Privacy</h3>
+        <p>This website uses third-party services such as SoundCloud and Mixcloud for music playback. These services may collect data according to their own privacy policies. No personal data is collected or stored directly by this website beyond what is necessary for the functionality of the embeds.</p>
       </section>
     </main>
 
@@ -129,13 +140,11 @@ He has closely collaborated with the electronic music organisation Loomynum Coll
       link.addEventListener("click", e => {
         e.preventDefault();
 
-        // Toggle Panels
         links.forEach(l => l.classList.remove("active-link"));
         link.classList.add("active-link");
         panels.forEach(p => p.classList.remove("active"));
         document.getElementById(link.dataset.panel).classList.add("active");
 
-        // Toggle Backgrounds and apply Light Mode class
         if (currentBg === 1) {
           bg1.style.opacity = "0";
           bg2.style.opacity = "1";

@@ -205,12 +205,12 @@ footer {
   column-gap: 20px;
   text-align: left;
 }
-#home h1 { font-size: min(3rem, 3.4vw); line-height: 1.1; }
+#home h1 { font-size: min(2.25rem, 2.55vw); line-height: 1.1; }
 #home .tagline {
   margin-top: 0;
   margin-left: auto;
   text-align: right;
-  font-size: clamp(0.7rem, 1.1vw, 0.95rem);
+  font-size: clamp(0.6rem, 0.94vw, 0.8125rem);
   letter-spacing: 0.5px;
 }
 
@@ -244,8 +244,8 @@ footer {
     align-items: stretch;
     row-gap: 4px;
   }
-  #home h1 { font-size: 1.8rem; }
-  #home .tagline { font-size: 0.7rem; }
+  #home h1 { font-size: 1.35rem; }
+  #home .tagline { font-size: 0.6rem; }
 
   .content-panel {
     width: 100%;

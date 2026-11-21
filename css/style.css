@@ -190,17 +190,28 @@ footer {
   color: #ffffff;
 }
 
-/* --- HOME: name on the left of the face, tagline on the right --- */
-@media (min-width: 769px) {
-  /* middle column (48vh) roughly matches the face width of the centred photo */
-  #home.active {
-    display: grid;
-    grid-template-columns: 1fr 48vh 1fr;
-    align-items: center;
-    max-width: none;
-  }
-  #home h1 { grid-column: 1; text-align: right; }
-  #home .tagline { grid-column: 3; text-align: left; margin-top: 0; }
+/* --- HOME: name left, tagline right, on one baseline just above the footer line.
+   Same width (57%) and centring as .footer-line so the edges line up. --- */
+#home.active {
+  align-self: flex-end;
+  width: 57%;
+  max-width: none;
+  margin: 0 auto;
+  padding-bottom: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  column-gap: 20px;
+  text-align: left;
+}
+#home h1 { font-size: min(3rem, 3.4vw); line-height: 1.1; }
+#home .tagline {
+  margin-top: 0;
+  margin-left: auto;
+  text-align: right;
+  font-size: clamp(0.7rem, 1.1vw, 0.95rem);
+  letter-spacing: 0.5px;
 }
 
 /* --- MOBILE SPECIFIC --- */
@@ -227,16 +238,14 @@ footer {
     border-bottom: 1px solid #000000;
   }
 
-  /* Home: name in the top-left corner, tagline in the bottom-right corner */
+  /* Home: stacked just above the footer line, name left, tagline right */
   #home.active {
-    align-self: stretch;
-    display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 30px 6px 20px;
+    align-items: stretch;
+    row-gap: 4px;
   }
-  #home h1 { text-align: left; }
-  #home .tagline { text-align: right; }
+  #home h1 { font-size: 1.8rem; }
+  #home .tagline { font-size: 0.7rem; }
 
   .content-panel {
     width: 100%;

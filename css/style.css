@@ -128,12 +128,47 @@ footer {
   filter: none;
 }
 
-/* --- DESKTOP LAYOUT: text column on the left, photo on the right --- */
-@media (min-width: 769px) {
-  .main-wrapper {
-    width: 50%;
-  }
+/* Thin line above the social icons (like anthony-rother.com) */
+.footer-line {
+  width: 57%;
+  border: 0;
+  border-top: 1px solid rgba(250, 250, 250, .6);
+  margin: 0 auto 5px;
 }
+
+/* --- TEXT PANELS (Bio, Contact): semi-transparent, darker than the shaded photo --- */
+.panel:has(.content-panel) { max-width: none; }
+
+.content-panel {
+  width: 55%;
+  max-width: 900px;
+  margin: 0 auto;
+  max-height: calc(100vh - 230px);
+  overflow-y: auto;
+  scrollbar-width: none;
+  text-align: left;
+  background: rgba(30, 30, 30, .87);
+  padding: 20px 24px 32px;
+  border-radius: .4rem;
+  text-shadow: none;
+}
+.content-panel::-webkit-scrollbar { display: none; }
+
+.content-panel h2 {
+  text-align: center;
+  text-transform: none;
+  font-weight: 200;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+.content-panel h3 {
+  font-weight: 200;
+  font-size: 1.3rem;
+  margin: 10px 0 8px;
+}
+.content-panel p + p { margin-top: 10px; }
+.content-panel a { color: #ffffff; text-decoration: none; }
+.content-panel a:hover { text-decoration: underline; }
 
 .copyright {
   font-size: 0.55rem;
@@ -168,10 +203,10 @@ footer {
     border-bottom: 1px solid #000000;
   }
 
-  /* Push the content below the photo's chin (photo is 150vw tall, chin at ~73%) */
-  main {
-    align-items: flex-start;
-    padding-top: 114vw;
+  .content-panel {
+    width: 100%;
+    max-height: none;
+    padding: 16px 14px 24px;
   }
 
   nav { gap: 10px; }

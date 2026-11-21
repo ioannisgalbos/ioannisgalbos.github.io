@@ -31,7 +31,6 @@
       background-position: center;
       opacity: 0;
       transition: opacity 1.5s ease-in-out;
-      filter: brightness(0.75);
     }
 
     .bg-1 {
@@ -42,37 +41,17 @@
       background-image: url('images/bg2.jpg');
     }
 
-    /* Desktop: the photo sits in the right half, the text gets the left half */
-    @media (min-width: 769px) {
-      .bg-container {
-        left: 50%;
-        width: 50%;
-      }
-      /* soften the photo's left/right edges into the black page */
-      .bg-img {
-        -webkit-mask-image: linear-gradient(to right, transparent 5%, #000 25%, #000 75%, transparent 95%);
-        mask-image: linear-gradient(to right, transparent 5%, #000 25%, #000 75%, transparent 95%);
-      }
+    /* Shading over the photo: fine dot pattern at 50%, same feel as anthony-rother.com */
+    .bg-overlay {
+      position: absolute;
+      inset: 0;
+      opacity: .5;
+      background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAFUlEQVR4nGNgYGD4D8R3oBjOQOUAAJAoB+Dwid79AAAAAElFTkSuQmCC') center center repeat;
     }
 
-    /* Mobile: the photo sits at the top under the nav and fades out below the chin;
-       the text starts underneath it and the photo scrolls away with the page */
+    /* Mobile: the portrait photo fills the screen */
     @media (max-width: 768px) {
-      .bg-container {
-        position: absolute;
-        top: 44px;
-        height: 150vw;
-      }
-      .bg-img {
-        background-size: 100% auto;
-        background-position: center top;
-      }
-      .bg-container::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to bottom, rgba(0,0,0,0) 70%, #000 100%);
-      }
+      .bg-img { background-size: cover; }
     }
   </style>
 </head>
@@ -82,6 +61,7 @@
   <div class="bg-container" id="bg-container">
     <div class="bg-img bg-1"></div>
     <div class="bg-img bg-2"></div>
+    <div class="bg-overlay"></div>
   </div>
 
   <div class="main-wrapper" id="main-wrapper">
@@ -100,7 +80,7 @@
       </section>
 
       <section id="bio" class="panel">
-        <div class="content-limit">
+        <div class="content-panel">
           <h2>Bio</h2>
           <p>Ioannis Galbos / Stockholm, Sweden</p>
           <p>Tracks released by LAUS MUSIC - London, Juan's Kitchen Delights - Skopje and 2 Rhythm 4 Record - UK.</p>
@@ -123,12 +103,20 @@ He has closely collaborated with the electronic music organisation Loomynum Coll
       </section>
 
       <section id="impressum" class="panel">
-        <h2>Contact</h2>
-        <a href="mailto:info@ioannisgalbos.se" class="email-btn">info@ioannisgalbos.se</a>
+        <div class="content-panel">
+          <h2>imprint</h2>
+          <h3>Contact:</h3>
+          <p>Ioannis Galbos<br>
+            Ormingeringen 73. 13233<br>
+            13233 Stockholm / Sweden<br>
+            Tel.: <a href="tel:+46768045055">+46 76 804 5055</a><br>
+            <a href="mailto:contact@ioannisgalbos.com">contact@ioannisgalbos.com</a></p>
+        </div>
       </section>
     </main>
 
     <footer>
+      <hr class="footer-line">
       <div class="socials">
         <a href="https://ioannisgalbos.bandcamp.com/" target="_blank" rel="noopener noreferrer"><img src="icons/bandcamp.png" alt="Bandcamp"></a>
         <a href="https://soundcloud.com/ioannisgalbos" target="_blank" rel="noopener noreferrer"><img src="icons/soundcloud.svg" alt="Soundcloud"></a>

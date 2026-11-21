@@ -31,7 +31,7 @@
       background-position: center;
       opacity: 0;
       transition: opacity 1.5s ease-in-out;
-      filter: brightness(0.5);
+      filter: brightness(0.75);
     }
 
     .bg-1 {
@@ -40,6 +40,39 @@
     }
     .bg-2 {
       background-image: url('images/bg2.jpg');
+    }
+
+    /* Desktop: the photo sits in the right half, the text gets the left half */
+    @media (min-width: 769px) {
+      .bg-container {
+        left: 50%;
+        width: 50%;
+      }
+      /* soften the photo's left/right edges into the black page */
+      .bg-img {
+        -webkit-mask-image: linear-gradient(to right, transparent 5%, #000 25%, #000 75%, transparent 95%);
+        mask-image: linear-gradient(to right, transparent 5%, #000 25%, #000 75%, transparent 95%);
+      }
+    }
+
+    /* Mobile: the photo sits at the top under the nav and fades out below the chin;
+       the text starts underneath it and the photo scrolls away with the page */
+    @media (max-width: 768px) {
+      .bg-container {
+        position: absolute;
+        top: 44px;
+        height: 150vw;
+      }
+      .bg-img {
+        background-size: 100% auto;
+        background-position: center top;
+      }
+      .bg-container::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(0,0,0,0) 70%, #000 100%);
+      }
     }
   </style>
 </head>

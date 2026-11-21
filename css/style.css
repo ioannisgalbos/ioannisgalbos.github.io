@@ -117,8 +117,22 @@ footer {
 .socials img {
   width: 22px;
   height: auto;
-  transition: transform 0.2s;
+  transition: transform 0.2s, filter 0.3s ease;
   opacity: 1;
+  filter: grayscale(100%);
+}
+
+/* Icons show their original colours on hover / keyboard focus */
+.socials a:hover img,
+.socials a:focus-visible img {
+  filter: none;
+}
+
+/* --- DESKTOP LAYOUT: text column on the left, photo on the right --- */
+@media (min-width: 769px) {
+  .main-wrapper {
+    width: 50%;
+  }
 }
 
 .copyright {
@@ -152,6 +166,12 @@ footer {
 
   .main-wrapper.light-mode nav a.active-link {
     border-bottom: 1px solid #000000;
+  }
+
+  /* Push the content below the photo's chin (photo is 150vw tall, chin at ~73%) */
+  main {
+    align-items: flex-start;
+    padding-top: 114vw;
   }
 
   nav { gap: 10px; }
